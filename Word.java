@@ -10,7 +10,7 @@ import java.net.URL;
 public class Word {
  public static void main(String[] args) {
      System.out.print(getWord(5));
-
+    //hello
  }
 
  public static String getWord(int wordLength) {
