@@ -34,7 +34,7 @@ public class Word {
         in.close();
         con.disconnect();
         String word = content.toString();
-        return word;
+        return clean(word);
 
      } catch (MalformedURLException e) {
          System.out.println(e);
@@ -49,22 +49,22 @@ public class Word {
     word = word.substring(2, word.length() -2 );
     return word;
 }
-
+//Seperates each letter into a index of the ArrayList
 public static ArrayList<String> seperateWord(String word){
-    String cleaned = clean(word);
+    //String cleaned = clean(word);
     ArrayList<String> scrambled = new ArrayList<String>();
-    for (int i = 0; i < cleaned.length(); i ++){
-        scrambled.add(i, cleaned.substring(i , i+1));
+    for (int i = 0; i < word.length(); i ++){
+        scrambled.add(i, word.substring(i , i+1));
     }
     return scrambled;
 }
-
+//Swap method
 public static void swap(int i, int j, ArrayList<String> inArray){
     String temp = inArray.get(i);
     inArray.set(i, inArray.get(j));
     inArray.set(j, temp);
 }
-
+//Random shuffler method
 public static ArrayList<String>scramble(String word){
     ArrayList<String> scrambled = seperateWord(word);
     for(int i = 0; i < scrambled.size(); i++){
@@ -72,6 +72,11 @@ public static ArrayList<String>scramble(String word){
         swap(i, random, scrambled);
     }
 
+    for(int i = 0; i < scrambled.size(); i++){
+        if(word.substring(i, i + 1).equals(scrambled.get(i))){
+            scramble(word);
+        }
+    }
     
     return scrambled;
 }
