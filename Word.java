@@ -65,20 +65,39 @@ public static void swap(int i, int j, ArrayList<String> inArray){
     inArray.set(j, temp);
 }
 //Random shuffler method
-public static ArrayList<String>scramble(String word){
-    ArrayList<String> scrambled = seperateWord(word);
-    for(int i = 0; i < scrambled.size(); i++){
-        int random = (int) (Math.random()*(scrambled.size()));
-        swap(i, random, scrambled);
-    }
-
-    for(int i = 0; i < scrambled.size(); i++){
-        if(word.substring(i, i + 1).equals(scrambled.get(i))){
-            scramble(word);
+//public static ArrayList<String>scramble(String word){
+//    ArrayList<String> scrambled = seperateWord(word);
+//    for(int i = 0; i < scrambled.size(); i++){
+//        int random = (int) (Math.random()*(scrambled.size()));
+//        swap(i, random, scrambled);
+//    }
+//
+//    for(int i = 0; i < scrambled.size(); i++){
+//        if(word.substring(i, i + 1).equals(scrambled.get(i))){
+//            scramble(word);
+//        }
+//    }
+//    
+//    return scrambled;
+//}
+ 
+ public static String scramble(String input){
+    String[] scrambled =  new String[input.length()];
+        for (int i = 0; i < input.length(); i++){
+            scrambled[i] = input.substring(i, i + 1); 
         }
-    }
-    
-    return scrambled;
+        for (int k = 0; k < scrambled.length; k++){
+            int location = (int)(Math.random() * scrambled.length)
+            String temp = scrambled[location];
+            int destination = (int)(Math.random() * scrambled.length);
+            scrambled[location] = scrambled[destination];
+            scrambled[destination] = temp;
+        }
+        String result = "";
+        for (int j = 0; j < scrambled.length; j++){
+            result += scrambled[j];
+        }
+        return result;
 }
 
 // public static ArrayList<String> scrambled(String word){
