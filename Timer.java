@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 public class Timer{
     //https://stackoverflow.com/questions/10820033/make-a-simple-timer-in-java
     //DON'T TOUCH MY TIMER CLASS @EVERYONE
-
+    //touch -nathan
     public static void main(String[] args){
         long startTime = System.currentTimeMillis();
         long endTime = System.currentTimeMillis() + 300;
