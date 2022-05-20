@@ -20,7 +20,7 @@ public class Word {
         // URL url = new URL(apiUrl);
         HttpURLConnection con = (HttpsURLConnection) url.openConnection();
         con.setRequestMethod("GET");
-        int response = con.getResponseCode();
+        // int response = con.getResponseCode();
         // System.out.print(response);
         BufferedReader in = new BufferedReader(
             new InputStreamReader(con.getInputStream())
@@ -87,7 +87,7 @@ public static void swap(int i, int j, ArrayList<String> inArray){
             scrambled[i] = input.substring(i, i + 1); 
         }
         for (int k = 0; k < scrambled.length; k++){
-            int location = (int)(Math.random() * scrambled.length)
+            int location = (int)(Math.random() * scrambled.length);
             String temp = scrambled[location];
             int destination = (int)(Math.random() * scrambled.length);
             scrambled[location] = scrambled[destination];

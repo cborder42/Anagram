@@ -1,12 +1,37 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.border.*;
+import javax.swing.JTextField;
+
 public class Game{
     private int score;
     private int level;
     public Game() {
         score = 0;
         level = 1;
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("FrameDemo");
+        // Constructor to make title text and set it horizontally center
+        JLabel title = new JLabel("Anagram", JLabel.CENTER);
+        frame.pack();
+        frame.setVisible(true);
+        frame.getContentPane().add(title);
+        //set vertical position top
+        title.setVerticalAlignment(JLabel.TOP);
+        // title.setFont(new Font("Serif", Font.PLAIN, 20));
+
+
+        //JTextField textField = new JTextField(1);
+        //textField.addActionListener(this);
+        
+
+
+        // frame.getContentPane().add(emptyLabel, BorderLayout.Center);
     }
     
     public void playGame() {
@@ -16,7 +41,7 @@ public class Game{
             System.out.println("Level "+level+":");
             String currentWord = (Word.getWord(wordLength));
             System.out.print(currentWord);
-            ArrayList<String> scrambledWord = Word.scramble(currentWord);
+            String scrambledWord = Word.scramble(currentWord);
             System.out.println("Scrambled word: " + scrambledWord);
             System.out.print("Enter in your guess:");
             String guess = scanner.nextLine();
