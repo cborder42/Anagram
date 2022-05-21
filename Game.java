@@ -3,8 +3,11 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.*;
 import javax.swing.JTextField;
+import java.awt.Dimension;
+
 
 public class Game{
     private int score;
@@ -18,12 +21,18 @@ public class Game{
         JFrame frame = new JFrame("FrameDemo");
         // Constructor to make title text and set it horizontally center
         JLabel title = new JLabel("Anagram", JLabel.CENTER);
-        frame.pack();
-        frame.setVisible(true);
-        frame.getContentPane().add(title);
+        frame.add(title);
         //set vertical position top
         title.setVerticalAlignment(JLabel.TOP);
         // title.setFont(new Font("Serif", Font.PLAIN, 20));
+        JPanel textPanel = new JPanel();
+        JTextField textField = new JTextField(5);
+        textPanel.setPreferredSize(new Dimension(250, 50));
+        textPanel.add(textField);
+        frame.add(textPanel);
+
+        frame.pack();
+        frame.setVisible(true);
 
 
         //JTextField textField = new JTextField(1);
