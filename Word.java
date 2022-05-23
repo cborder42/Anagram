@@ -81,21 +81,25 @@ public static void swap(int i, int j, ArrayList<String> inArray){
 //    return scrambled;
 //}
  
- public static String scramble(String input){
-    String[] scrambled =  new String[input.length()];
+ public static ArrayList<String> scramble(String input){
+    ArrayList<String> scrambled =  new ArrayList<String>();
         for (int i = 0; i < input.length(); i++){
-            scrambled[i] = input.substring(i, i + 1); 
+            scrambled.add(input.substring(i, i + 1)); 
         }
-        for (int k = 0; k < scrambled.length; k++){
-            int location = (int)(Math.random() * scrambled.length);
-            String temp = scrambled[location];
-            int destination = (int)(Math.random() * scrambled.length);
-            scrambled[location] = scrambled[destination];
-            scrambled[destination] = temp;
+        for (int k = 0; k < scrambled.size(); k++){
+            int location = (int)(Math.random() * scrambled.size());
+            String temp = scrambled.get(location);
+            int destination = (int)(Math.random() * scrambled.size());
+            scrambled.set(location, scrambled.get(destination));
+            scrambled.set(destination, temp);
         }
+    return scrambled;
+ }
+ 
+ public static String listToString(ArrayList<String> scrambled){
         String result = "";
-        for (int j = 0; j < scrambled.length; j++){
-            result += scrambled[j];
+        for (int j = 0; j < scrambled.size(); j++){
+            result += scrambled.get(j);
         }
         return result;
 }
