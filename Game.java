@@ -58,7 +58,8 @@ public class Game{
             System.out.println("You have " + lives + " lives");
             System.out.println("Level " + level + ":");
             String currentWord = Word.getWord(wordLength);
-            String scrambledWord = Word.scramble(currentWord);
+            ArrayList<String> scrambled = Word.scramble(currentWord);
+            String scrambledWord = Word.listToString(scrambled);
             System.out.println("Scrambled word: " + scrambledWord);
             System.out.print("Enter your guess:");
             String guess = scanner.nextLine();
