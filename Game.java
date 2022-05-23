@@ -12,9 +12,18 @@ import java.awt.Dimension;
 public class Game{
     private int score;
     private int level;
+    private int lives;
+    private int ID;
+    private int wordLength;
+    private static int numPlayers = 1;
+    
     public Game() {
         score = 0;
         level = 1;
+        lives = 3;
+        wordLength = 3;
+        ID = numPlayers;
+        numPlayers++        
     }
 
     public static void main(String[] args) {
@@ -45,26 +54,33 @@ public class Game{
     
     public void playGame() {
         Scanner scanner = new Scanner(System.in);
-        int wordLength = 3;
-        while (wordLength < 10) {
-            System.out.println("Level "+level+":");
-            String currentWord = (Word.getWord(wordLength));
-            System.out.print(currentWord);
+            System.out.println("Player " + ID);
+            System.out.println("You have " + lives + " lives");
+            System.out.println("Level " + level + ":");
+            String currentWord = Word.getWord(wordLength);
             String scrambledWord = Word.scramble(currentWord);
             System.out.println("Scrambled word: " + scrambledWord);
-            System.out.print("Enter in your guess:");
+            System.out.print("Enter your guess:");
             String guess = scanner.nextLine();
             while(!guess.equals(currentWord)) {
-                System.out.print("Try again:");
-                guess = scanner.nextLine();
+                lives--;
+                if (lives > 0){
+                    System.out.println("Incorrect. You now have " + lives + " lives.");
+                    System.out.print("Try again:");
+                    guess = scanner.nextLine();
+                }
+                else {
+                    System.out.println("Incorrect. You have no lives left, game over.");
+                }
             }
-            System.out.print("Correct");
+            if (lives > 0){
+                System.out.print("Correct. Entering next level...");
                 level++;
-                wordLength++;
-                score++;
-            
-            
-        }
+                score += wordLength;
+                if (wordLength < 10){
+                    wordLength++;
+                }
+            }
         scanner.close();
     }
 
