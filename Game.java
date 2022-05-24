@@ -7,6 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.border.*;
 import javax.swing.JTextField;
 import java.awt.Dimension;
+// import java.beans.PropertyChangeListener;
+// import java.beans.PropertyChangeEvent;
+import java.awt.*;
 
 
 public class Game{
@@ -17,28 +20,46 @@ public class Game{
     private int wordLength;
     private static int numPlayers = 1;
     
+    
     public Game() {
         score = 0;
         level = 1;
-        lives = 3;
+        lives = 5;
         wordLength = 3;
         ID = numPlayers;
-        numPlayers++        
+        numPlayers++;
     }
 
     public static void main(String[] args) {
+
+        //Section 1
         JFrame frame = new JFrame("FrameDemo");
-        // Constructor to make title text and set it horizontally center
-        JLabel title = new JLabel("Anagram", JLabel.CENTER);
-        frame.add(title);
-        //set vertical position top
-        title.setVerticalAlignment(JLabel.TOP);
-        // title.setFont(new Font("Serif", Font.PLAIN, 20));
-        JPanel textPanel = new JPanel();
+        JPanel panel = new JPanel(new GridBagLayout());
+        JLabel label = new JLabel();
+
+        label.setText("Anagrams");
+        panel.add(label);
+        frame.add(panel);
+        frame.setSize(300,300);
+        
+        Font font = new Font("Serif", Font.PLAIN, 50);
+        label.setFont(font);
+        
+        //Section 2
+        //JPanel textPanel = new JPanel();
+    
+        panel.setPreferredSize(new Dimension(250, 50));
         JTextField textField = new JTextField(5);
-        textPanel.setPreferredSize(new Dimension(250, 50));
-        textPanel.add(textField);
-        frame.add(textPanel);
+        JLabel textLabel = new JLabel("Enter guess:");
+        textLabel.setLabelFor(textField);
+        panel.add(textLabel);
+        panel.add(textField);
+        frame.add(panel);
+
+        // JLabel scrambled = new JLabel();
+        // String currentWord = Word.getWord(3);
+        // scrambled.setText(Word.listToString(Word.scramble(currentWord)));
+        // scrambled.add(panel);
 
         frame.pack();
         frame.setVisible(true);
