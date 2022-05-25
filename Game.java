@@ -108,6 +108,7 @@ public class Game{
                 }
                 else {
                     System.out.println("Incorrect. You have no lives left, game over.");
+                    System.out.println("The correct answer is: " + currentWord);
                 }
             }
             if (lives > 0){
