@@ -63,6 +63,7 @@ public class Game{
 
         frame.pack();
         frame.setVisible(true);
+        
 
 
         //JTextField textField = new JTextField(1);
@@ -71,6 +72,15 @@ public class Game{
 
 
         // frame.getContentPane().add(emptyLabel, BorderLayout.Center);
+        
+        boolean a = false;
+        boolean b = true;
+        if (a && b){
+            System.out.println("hello");
+            System.out.println("This will not run");
+        }
+
+        
     }
     
     public void playGame() {
@@ -106,6 +116,12 @@ public class Game{
         scanner.close();
     }
 
+    
+
+    
+    
+
+   
 
 
     
