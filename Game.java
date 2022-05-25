@@ -17,7 +17,6 @@ public class Game{
     private int level;
     private int lives;
     private int ID;
-    private int wordLength;
     private static int numPlayers = 1;
     
     
@@ -25,7 +24,6 @@ public class Game{
         score = 0;
         level = 1;
         lives = 5;
-        wordLength = 3;
         ID = numPlayers;
         numPlayers++;
     }
@@ -80,16 +78,18 @@ public class Game{
             System.out.println("This will not run");
         }
 
-        boolean yes = false;
-        boolean no = false;
+        boolean yes = false
+        boolean no = false
         if (a || b){
-            System.out.println("something is wrong");
+            System.out.println(something is wrong);
         }
         
     }
     
     public void playGame() {
         Scanner scanner = new Scanner(System.in);
+        int wordLength = 3;
+        while (lives > 0){
             System.out.println("Player " + ID);
             System.out.println("You have " + lives + " lives");
             System.out.println("Level " + level + ":");
@@ -99,7 +99,7 @@ public class Game{
             System.out.println("Scrambled word: " + scrambledWord);
             System.out.print("Enter your guess:");
             String guess = scanner.nextLine();
-            while(!guess.equals(currentWord)) {
+            while(!guess.equals(currentWord) && lives > 0) {
                 lives--;
                 if (lives > 0){
                     System.out.println("Incorrect. You now have " + lives + " lives.");
@@ -118,6 +118,7 @@ public class Game{
                     wordLength++;
                 }
             }
+        }
         scanner.close();
     }
 
