@@ -97,13 +97,13 @@ public class Game{
             ArrayList<String> scrambled = Word.scramble(currentWord);
             String scrambledWord = Word.listToString(scrambled);
             System.out.println("Scrambled word: " + scrambledWord);
-            System.out.print("Enter your guess:");
+            System.out.print("Enter your guess: ");
             String guess = scanner.nextLine();
             while(!guess.equals(currentWord) && lives > 0) {
                 lives--;
                 if (lives > 0){
                     System.out.println("Incorrect. You now have " + lives + " lives.");
-                    System.out.print("Try again:");
+                    System.out.print("Try again: ");
                     guess = scanner.nextLine();
                 }
                 else {
@@ -111,7 +111,8 @@ public class Game{
                 }
             }
             if (lives > 0){
-                System.out.print("Correct. Entering next level...");
+                System.out.println("Correct. Entering next level...");
+                System.out.println("");
                 level++;
                 score += wordLength;
                 if (wordLength < 10){
