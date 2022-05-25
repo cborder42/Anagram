@@ -80,10 +80,10 @@ public class Game{
             System.out.println("This will not run");
         }
 
-        boolean yes = false
-        boolean no = false
+        boolean yes = false;
+        boolean no = false;
         if (a || b){
-            System.out.println(something is wrong);
+            System.out.println("something is wrong");
         }
         
     }
