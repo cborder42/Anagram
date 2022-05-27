@@ -11,12 +11,13 @@ import java.awt.Dimension;
 // import java.beans.PropertyChangeEvent;
 import java.awt.*;
 import javax.swing.*;
+import static javax.swing.GroupLayout.Alignment.CENTER;
 
 
 public class Game{
     private int score;
-    private int level;
-    private int lives;
+    private int level = 1;
+    private int lives = 10;
     private int ID;
     private static int numPlayers = 1;
     
@@ -34,17 +35,23 @@ public class Game{
         //Main Frame Initializer
         JFrame frame = new JFrame("FrameDemo");
         frame.setSize(400,400);
+        // frame.setLocationRelativeTo(null);
+
+        //Font creator
+        Font fontTitle = new Font("Sans Serif", Font.BOLD, 50);
+        Font fontUnscramble = new Font("Sans Serif", Font.PLAIN, 37);
+        Font enterGuess = new Font("Sans Serif", Font.PLAIN, 24);
         
         //Section 1 (layout Label)
         JPanel panel = new JPanel();
+        panel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        // panel.setAlignmentX(SwingConstants.CENTER);
         JLabel label = new JLabel();
         label.setText("Anagrams");
         panel.add(label);
         frame.add(panel);
         label.setSize(100,100);
-        //Font creator
-        Font font = new Font("Serif", Font.PLAIN, 50);
-        label.setFont(font);
+        label.setFont(fontTitle);
         
         //Section 1 (TextLabel)
         //JPanel textPanel = new JPanel();
@@ -52,12 +59,14 @@ public class Game{
         JTextField textField = new JTextField();
         JLabel textLabel = new JLabel();
         textLabel.setText("Enter guess:");
+        textLabel.setFont(enterGuess);
         panel.add(textLabel);
         panel.add(textField);
 
         JLabel scrambled = new JLabel();
         String currentWord = Word.getWord(3);
         scrambled.setText(Word.listToString(Word.scramble(currentWord)));
+        scrambled.setFont(fontUnscramble);
         scrambled.setSize(100,100);
         panel.add(scrambled);
 
@@ -66,15 +75,18 @@ public class Game{
             panel.setLayout(layout);
             layout.setAutoCreateGaps(true);
             layout.setAutoCreateContainerGaps(true);
+        layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+            .addGroup(layout.createSequentialGroup())
+                .addGroup(layout.createParallelGroup(CENTER))   
+                    .addComponent(label)
+                    .addComponent(textField)
+                    .addComponent(scrambled));
         layout.setVerticalGroup(layout.createSequentialGroup()
-            .addComponent(label)
-            .addComponent(scrambled)
-            .addComponent(textField));
-        layout.setHorizontalGroup(layout.createSequentialGroup()
-            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(label)
-            .addComponent(textField)
-            .addComponent(scrambled)));
+            .addGroup(layout.createParallelGroup())
+                .addGroup(layout.createSequentialGroup())   
+                    .addComponent(label)
+                    .addComponent(scrambled)
+                    .addComponent(textField));
 
         layout.linkSize(SwingConstants.HORIZONTAL, label, scrambled, textField);
         layout.linkSize(SwingConstants.VERTICAL, label, scrambled, textField);
@@ -124,7 +136,7 @@ public class Game{
             System.out.println("Scrambled word: " + scrambledWord);
             System.out.print("Enter your guess: ");
             String guess = scanner.nextLine();
-            while((!guess.equals(currentWord) ||Word.checkForWord(currentWord)) && lives > 0) {
+            while(!guess.equals(currentWord) || !Word.checkForWord(currentWord) && lives > 0) {
                 lives--;
                 if (lives > 0){
                     System.out.println("Incorrect. You now have " + lives + " lives.");
@@ -141,8 +153,8 @@ public class Game{
                 System.out.println("");
                 level++;
                 score += wordLength;
-                if (wordLength < 10){
-                    wordLength++;
+                if (wordLength > 10){
+                    System.out.print("game over");
                 }
             }
         }
