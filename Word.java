@@ -1,15 +1,15 @@
 import java.util.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
+import java.io.*;
+import java.net.*;
 import javax.net.ssl.HttpsURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.UnknownHostException;
+import java.net.http.*;
+
+
 public class Word {
  public static void main(String[] args) {
-     System.out.print(getWord(5));
+    //  System.out.print(getWord(5));
+    //  System.out.print(checkForWord("garbage"));
     //hello
  }
 
@@ -44,6 +44,32 @@ public class Word {
          return null;
      }
  }
+
+//  public static boolean checkForWord(String word) {
+//      String apiUrl = "https://wordsapiv1.p.mashape.com/words/";
+//      try {
+//         HttpRequest request = HttpRequest.newBuilder()
+// 		.uri(URI.create("https://wordsapiv1.p.rapidapi.com/words/hatchback/typeOf"))
+// 		.header("X-RapidAPI-Host", "wordsapiv1.p.rapidapi.com")
+// 		.header("X-RapidAPI-Key", "da1ecf025amsh6c9c8ed28036583p11fd95jsn2031ab70a216")
+// 		.method("GET", HttpRequest.BodyPublishers.noBody())
+// 		.build();
+//         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+//         System.out.println(response.body());
+//         // URL url = new URL(apiUrl);
+//         System.out.print(response);
+
+//         return true;
+//      } catch (MalformedURLException e) {
+//          System.out.println(e);
+//          return false;
+//      } catch (IOException e) {
+//          System.out.println(e);
+//          return false;
+//      } catch (InterruptedException e) {
+//          return false;
+//      }
+//  }
 //Cleans up word so that it is just the word returned
  public static String clean(String word){
     word = word.substring(2, word.length() -2 );
@@ -64,22 +90,6 @@ public static void swap(int i, int j, ArrayList<String> inArray){
     inArray.set(i, inArray.get(j));
     inArray.set(j, temp);
 }
-//Random shuffler method
-//public static ArrayList<String>scramble(String word){
-//    ArrayList<String> scrambled = seperateWord(word);
-//    for(int i = 0; i < scrambled.size(); i++){
-//        int random = (int) (Math.random()*(scrambled.size()));
-//        swap(i, random, scrambled);
-//    }
-//
-//    for(int i = 0; i < scrambled.size(); i++){
-//        if(word.substring(i, i + 1).equals(scrambled.get(i))){
-//            scramble(word);
-//        }
-//    }
-//    
-//    return scrambled;
-//}
  
  public static ArrayList<String> scramble(String input){
     ArrayList<String> scrambled =  new ArrayList<String>();
@@ -104,24 +114,4 @@ public static void swap(int i, int j, ArrayList<String> inArray){
         return result;
 }
 
-// public static ArrayList<String> scrambled(String word){
-//     String original = word;
-//     word = seperateWord(word);
-//     ArrayList<String> scrambled =  new ArrayList<String>();
-//     for (int i = 0; i < word.length(); i++){
-//         scrambled.add(i, word.substring(i, i + 1)); 
-//     }
-//     for (int k = 0; k < scrambled.size(); k++){
-//         String temporary = scrambled.get(k);
-//         int newest = (int)(Math.random() * scrambled.size()+1);
-//         scrambled.set(k, scrambled.get(newest));
-//         scrambled.set(newest, temporary);
-
-//     }
-
-//     return scrambled;
-// }    
-
-    
-//  public static 
 }
