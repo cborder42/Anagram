@@ -160,6 +160,17 @@ public class Game{
         }
         scanner.close();
     }
+    public static void hint(String input){
+       int index = (int)(Math.random() * (input.length() - 1));
+       for (int i = 0; i < index; i++){
+          System.out.print("_ ");
+       }
+       System.out.print(input.substring(index, index + 1));
+       for(int k = index; k < input.length(); k++){
+          System.out.print("_ ");
+       } 
+    }
+
 
     
 
