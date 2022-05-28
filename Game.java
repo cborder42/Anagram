@@ -13,6 +13,8 @@ import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import javax.swing.*;
 import static javax.swing.GroupLayout.Alignment.CENTER;
+import static javax.swing.GroupLayout.Alignment.LEADING;
+import static javax.swing.GroupLayout.Alignment.BASELINE;;;
 
 
 public class Game{
@@ -36,7 +38,7 @@ public class Game{
         JFrame frame = new JFrame("FrameDemo");
         frame.setSize(10,10);
         frame.setTitle("One Word Anagram");
-        // frame.setLocationRelativeTo(null);
+        frame.setLocationRelativeTo(null);
 
         //Font creator
         Font fontTitle = new Font("Sans Serif", Font.BOLD, 50);
@@ -51,14 +53,26 @@ public class Game{
         label.setFont(fontTitle);
         
         //Section 1 (TextLabel)
-        panel.setPreferredSize(new Dimension(250, 50));
         JTextField textField = new JTextField(10);
-        JLabel textLabel = new JLabel("Enter guess:");
-        textLabel.setText("Enter guess:");
-        textLabel.setFont(enterGuess);
+        JTextField textField2 = new JTextField();
+        JTextField textField3 = new JTextField();
+        JTextField textField4 = new JTextField();
+        JTextField textField5 = new JTextField();
         textField.setFont(enterGuess);
-        panel.add(textLabel);
+        textField2.setFont(enterGuess);
+        textField3.setFont(enterGuess);
+        textField4.setFont(enterGuess);
+        textField5.setFont(enterGuess);
         panel.add(textField);
+        panel.add(textField2);
+        panel.add(textField3);
+        panel.add(textField4);
+        panel.add(textField5);
+
+        JLabel instruction = new JLabel("Enter guess:");
+        instruction.setText("Enter guess:");
+        instruction.setFont(enterGuess);
+        panel.add(instruction);
 
         JLabel scrambled = new JLabel("EATRG");
         // String currentWord = Word.getWord(3);
@@ -71,17 +85,32 @@ public class Game{
             panel.setLayout(layout);
             layout.setAutoCreateGaps(true);
             layout.setAutoCreateContainerGaps(true);
-        layout.setHorizontalGroup(layout.createParallelGroup(CENTER)  
-                    .addComponent(label)
-                    .addComponent(scrambled)
-                    .addComponent(textField));
+
+        layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+            // .addGroup(layout.createParallelGroup(CENTER))
+                .addComponent(label)
+                .addComponent(scrambled)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(instruction)
+                .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE)
+                .addComponent(textField2, 0, 25, GroupLayout.PREFERRED_SIZE)
+                .addComponent(textField3, 0, 25, GroupLayout.PREFERRED_SIZE)
+                .addComponent(textField4, 0, 25, GroupLayout.PREFERRED_SIZE)
+                .addComponent(textField5, 0, 25, GroupLayout.PREFERRED_SIZE)));
                     // .addComponent(textField, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE));
                     
                     
         layout.setVerticalGroup(layout.createSequentialGroup()
-                    .addComponent(label)
-                    .addComponent(scrambled)
-                    .addComponent(textField));
+            // .addGroup(layout.createSequentialGroup())
+                .addComponent(label)
+                .addComponent(scrambled)
+            .addGroup(layout.createParallelGroup(CENTER)
+                .addComponent(instruction)
+                .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE)
+                .addComponent(textField2, 0, 25, GroupLayout.PREFERRED_SIZE)
+                .addComponent(textField3, 0, 25, GroupLayout.PREFERRED_SIZE)
+                .addComponent(textField4, 0, 25, GroupLayout.PREFERRED_SIZE)
+                .addComponent(textField5, 0, 25, GroupLayout.PREFERRED_SIZE)));
                     // .addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE));
 
         // layout.linkSize(SwingConstants.HORIZONTAL, label, scrambled, textField);
