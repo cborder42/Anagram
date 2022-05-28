@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.awt.Component;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.*;
-import javax.swing.JTextField;
+import java.awt.event.*;
 import java.awt.Dimension;
+import javax.swing.text.MaskFormatter;
 // import java.beans.PropertyChangeListener;
 // import java.beans.PropertyChangeEvent;
 import java.awt.*;
@@ -31,43 +32,38 @@ public class Game{
     }
 
     public static void main(String[] args) {
-
         //Main Frame Initializer
         JFrame frame = new JFrame("FrameDemo");
-        frame.setSize(400,400);
+        frame.setSize(10,10);
+        frame.setTitle("One Word Anagram");
         // frame.setLocationRelativeTo(null);
 
         //Font creator
         Font fontTitle = new Font("Sans Serif", Font.BOLD, 50);
-        Font fontUnscramble = new Font("Sans Serif", Font.PLAIN, 37);
-        Font enterGuess = new Font("Sans Serif", Font.PLAIN, 24);
+        Font fontUnscramble = new Font("Sans Serif", Font.BOLD, 37);
+        Font enterGuess = new Font("Sans Serif", Font.BOLD, 24);
         
         //Section 1 (layout Label)
         JPanel panel = new JPanel();
-        panel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-        // panel.setAlignmentX(SwingConstants.CENTER);
-        JLabel label = new JLabel();
-        label.setText("Anagrams");
+        JLabel label = new JLabel("One Word Anagrams");
         panel.add(label);
         frame.add(panel);
-        label.setSize(100,100);
         label.setFont(fontTitle);
         
         //Section 1 (TextLabel)
-        //JPanel textPanel = new JPanel();
         panel.setPreferredSize(new Dimension(250, 50));
-        JTextField textField = new JTextField();
-        JLabel textLabel = new JLabel();
+        JTextField textField = new JTextField(10);
+        JLabel textLabel = new JLabel("Enter guess:");
         textLabel.setText("Enter guess:");
         textLabel.setFont(enterGuess);
+        textField.setFont(enterGuess);
         panel.add(textLabel);
         panel.add(textField);
 
-        JLabel scrambled = new JLabel();
-        String currentWord = Word.getWord(3);
-        scrambled.setText(Word.listToString(Word.scramble(currentWord)));
+        JLabel scrambled = new JLabel("EATRG");
+        // String currentWord = Word.getWord(3);
+        // scrambled.setText(Word.listToString(Word.scramble(currentWord)));
         scrambled.setFont(fontUnscramble);
-        scrambled.setSize(100,100);
         panel.add(scrambled);
 
         //Layout Manager
@@ -75,25 +71,26 @@ public class Game{
             panel.setLayout(layout);
             layout.setAutoCreateGaps(true);
             layout.setAutoCreateContainerGaps(true);
-        layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
-            .addGroup(layout.createSequentialGroup())
-                .addGroup(layout.createParallelGroup(CENTER))   
-                    .addComponent(label)
-                    .addComponent(textField)
-                    .addComponent(scrambled));
-        layout.setVerticalGroup(layout.createSequentialGroup()
-            .addGroup(layout.createParallelGroup())
-                .addGroup(layout.createSequentialGroup())   
+        layout.setHorizontalGroup(layout.createParallelGroup(CENTER)  
                     .addComponent(label)
                     .addComponent(scrambled)
                     .addComponent(textField));
+                    // .addComponent(textField, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE));
+                    
+                    
+        layout.setVerticalGroup(layout.createSequentialGroup()
+                    .addComponent(label)
+                    .addComponent(scrambled)
+                    .addComponent(textField));
+                    // .addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE));
 
-        layout.linkSize(SwingConstants.HORIZONTAL, label, scrambled, textField);
-        layout.linkSize(SwingConstants.VERTICAL, label, scrambled, textField);
+        // layout.linkSize(SwingConstants.HORIZONTAL, label, scrambled, textField);
+        // layout.linkSize(SwingConstants.VERTICAL, label, scrambled, textField);
        
 
         frame.pack();
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 
 
