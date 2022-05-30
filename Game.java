@@ -8,13 +8,12 @@ import javax.swing.border.*;
 import java.awt.event.*;
 import java.awt.Dimension;
 import javax.swing.text.MaskFormatter;
+import java.awt.event.ActionListener;
 // import java.beans.PropertyChangeListener;
 // import java.beans.PropertyChangeEvent;
 import java.awt.*;
 import javax.swing.*;
 import static javax.swing.GroupLayout.Alignment.CENTER;
-import static javax.swing.GroupLayout.Alignment.LEADING;
-import static javax.swing.GroupLayout.Alignment.BASELINE;;;
 
 
 public class Game{
@@ -34,10 +33,14 @@ public class Game{
     }
 
     public static void main(String[] args) {
+        
         //Main Frame Initializer
-        JFrame frame = new JFrame("FrameDemo");
+        JFrame frame = new JFrame("One Word Anagram");
+        JPanel panel = new JPanel();
+        GroupLayout layout = new GroupLayout(panel);
+        panel.setLayout(layout);
+        frame.add(panel);
         frame.setSize(10,10);
-        frame.setTitle("One Word Anagram");
         frame.setLocationRelativeTo(null);
 
         //Font creator
@@ -46,103 +49,50 @@ public class Game{
         Font enterGuess = new Font("Sans Serif", Font.BOLD, 24);
         
         //Section 1 (layout Label)
-        JPanel panel = new JPanel();
         JLabel label = new JLabel("One Word Anagrams");
-        panel.add(label);
-        frame.add(panel);
         label.setFont(fontTitle);
         
-        //Section 1 (TextLabel)
-        JTextField textField = new JTextField(10);
-        JTextField textField2 = new JTextField();
-        JTextField textField3 = new JTextField();
-        JTextField textField4 = new JTextField();
-        JTextField textField5 = new JTextField();
+        
+        //Section 2 (TextField + Action Listener)
+        JTextField textField = new JTextField();
         textField.setFont(enterGuess);
-        textField2.setFont(enterGuess);
-        textField3.setFont(enterGuess);
-        textField4.setFont(enterGuess);
-        textField5.setFont(enterGuess);
-        panel.add(textField);
-        panel.add(textField2);
-        panel.add(textField3);
-        panel.add(textField4);
-        panel.add(textField5);
+        textField.addActionListener(new ActionListener(){ 
+            public void actionPerformed(ActionEvent e){
+                String guess = textField.getText();
+                System.out.println(guess);
+            }
+        });
 
         JLabel instruction = new JLabel("Enter guess:");
-        instruction.setText("Enter guess:");
         instruction.setFont(enterGuess);
-        panel.add(instruction);
 
         JLabel scrambled = new JLabel("EATRG");
         // String currentWord = Word.getWord(3);
         // scrambled.setText(Word.listToString(Word.scramble(currentWord)));
         scrambled.setFont(fontUnscramble);
-        panel.add(scrambled);
 
         //Layout Manager
-        GroupLayout layout = new GroupLayout(panel);
-            panel.setLayout(layout);
-            layout.setAutoCreateGaps(true);
-            layout.setAutoCreateContainerGaps(true);
+        layout.setAutoCreateGaps(true);
+        layout.setAutoCreateContainerGaps(true);
 
         layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
-            // .addGroup(layout.createParallelGroup(CENTER))
                 .addComponent(label)
                 .addComponent(scrambled)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(instruction)
-                .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE)
-                .addComponent(textField2, 0, 25, GroupLayout.PREFERRED_SIZE)
-                .addComponent(textField3, 0, 25, GroupLayout.PREFERRED_SIZE)
-                .addComponent(textField4, 0, 25, GroupLayout.PREFERRED_SIZE)
-                .addComponent(textField5, 0, 25, GroupLayout.PREFERRED_SIZE)));
-                    // .addComponent(textField, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE));
+                .addComponent(textField, 0, 200, GroupLayout.PREFERRED_SIZE)));
                     
                     
         layout.setVerticalGroup(layout.createSequentialGroup()
-            // .addGroup(layout.createSequentialGroup())
                 .addComponent(label)
                 .addComponent(scrambled)
             .addGroup(layout.createParallelGroup(CENTER)
                 .addComponent(instruction)
-                .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE)
-                .addComponent(textField2, 0, 25, GroupLayout.PREFERRED_SIZE)
-                .addComponent(textField3, 0, 25, GroupLayout.PREFERRED_SIZE)
-                .addComponent(textField4, 0, 25, GroupLayout.PREFERRED_SIZE)
-                .addComponent(textField5, 0, 25, GroupLayout.PREFERRED_SIZE)));
-                    // .addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE));
-
-        // layout.linkSize(SwingConstants.HORIZONTAL, label, scrambled, textField);
-        // layout.linkSize(SwingConstants.VERTICAL, label, scrambled, textField);
-       
+                .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE)));      
 
         frame.pack();
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-
-
-        //JTextField textField = new JTextField(1);
-        //textField.addActionListener(this);
-        
-
-
-        // frame.getContentPane().add(emptyLabel, BorderLayout.Center);
-        
-        // boolean a = false;
-        // boolean b = true;
-        // if (a && b){
-        //     System.out.println("hello");
-        //     System.out.println("This will not run");
-        // }
-
-        // boolean yes = false;
-        // boolean no = false;
-        // if (yes || no){
-        //     System.out.println("something is wrong");
-        // }
-        
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
     }
     
     public void playGame() {
@@ -197,14 +147,16 @@ public class Game{
        } 
     }
 
+// // boolean a = false;
+//         // boolean b = true;
+//         // if (a && b){
+//         //     System.out.println("hello");
+//         //     System.out.println("This will not run");
+//         // }
 
-    
-
-    
-    
-
-   
-
-
-    
+//         // boolean yes = false;
+//         // boolean no = false;
+//         // if (yes || no){
+//         //     System.out.println("something is wrong");
+//         // }   
 }
