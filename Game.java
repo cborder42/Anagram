@@ -9,6 +9,7 @@ import java.awt.event.*;
 import java.awt.Dimension;
 import javax.swing.text.MaskFormatter;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 // import java.beans.PropertyChangeListener;
 // import java.beans.PropertyChangeEvent;
 import java.awt.*;
@@ -50,18 +51,16 @@ public class Game{
         
         //Section 1 (layout Label)
         JLabel label = new JLabel("One Word Anagrams");
+        JLabel wrongResponse = new JLabel("Incorrect");
+        JLabel correctResponse = new JLabel("Correct!");
+        correctResponse.setForeground(Color.green);
+        wrongResponse.setForeground(Color.red);
         label.setFont(fontTitle);
         
         
         //Section 2 (TextField + Action Listener)
         JTextField textField = new JTextField();
         textField.setFont(enterGuess);
-        textField.addActionListener(new ActionListener(){ 
-            public void actionPerformed(ActionEvent e){
-                String guess = textField.getText();
-                System.out.println(guess);
-            }
-        });
 
         JLabel instruction = new JLabel("Enter guess:");
         instruction.setFont(enterGuess);
@@ -88,12 +87,72 @@ public class Game{
                 .addComponent(scrambled)
             .addGroup(layout.createParallelGroup(CENTER)
                 .addComponent(instruction)
-                .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE)));      
+                .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE)));   
 
         frame.pack();
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        //Method to check when the ENTER Key is Pressed
+        textField.addActionListener(new ActionListener(){ 
+            public void actionPerformed(ActionEvent e){
+                // String guess = textField.getText();
+                // System.out.println(guess);
+                // layout.setAutoCreateGaps(true);
+                // layout.setAutoCreateContainerGaps(true);
+
+                // layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+                //     .addComponent(label)
+                //     .addComponent(scrambled)
+                // .addGroup(layout.createSequentialGroup()
+                //     .addComponent(instruction)
+                //     .addComponent(textField, 0, 200, GroupLayout.PREFERRED_SIZE))
+                // .addComponent(wrongResponse));
+                    
+                    
+                // layout.setVerticalGroup(layout.createSequentialGroup()
+                //     .addComponent(label)
+                //     .addComponent(scrambled)
+                //     .addGroup(layout.createParallelGroup(CENTER)
+                //         .addComponent(instruction)
+                //         .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                //     .addComponent(wrongResponse));
+                    
+                
+                // frame.pack();
+                // panel.setVisible(true);
+                // panel.revalidate();
+                // panel.repaint();
+                
+                layout.setAutoCreateGaps(true);
+                layout.setAutoCreateContainerGaps(true);
+
+                layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+                    .addComponent(label)
+                    .addComponent(scrambled)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(instruction)
+                    .addComponent(textField, 0, 200, GroupLayout.PREFERRED_SIZE))
+                .addComponent(correctResponse));
+                    
+                    
+                layout.setVerticalGroup(layout.createSequentialGroup()
+                    .addComponent(label)
+                    .addComponent(scrambled)
+                    .addGroup(layout.createParallelGroup(CENTER)
+                        .addComponent(instruction)
+                        .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                    .addComponent(correctResponse));
+                    
+                
+                frame.pack();
+                panel.setVisible(true);
+                panel.revalidate();
+                panel.repaint();
+            }
+        });
     }
+
     
     public void playGame() {
         Scanner scanner = new Scanner(System.in);
