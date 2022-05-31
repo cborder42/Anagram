@@ -28,12 +28,19 @@ public class Game{
         level = 1;
         lives = 5;
     }
-    
+
     public int getLength() {
         return length;
     }
     public void incrLength() {
         length++;
+    }
+    public void incrLevel() {
+        level++;
+    }
+
+    public void incrScore() {
+        score+=500;
     }
 
     

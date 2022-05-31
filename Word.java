@@ -2,6 +2,7 @@ import java.util.*;
 import java.io.*;
 import java.net.*;
 import javax.net.ssl.HttpsURLConnection;
+import javax.script.ScriptEngineFactory;
 import javax.swing.text.Position;
 
 import java.net.UnknownHostException;
@@ -18,6 +19,8 @@ public class Word {
     }
 
     public static void main(String[] args) { //  System.out.print(getWord(9));
+        spaceOut("hello");
+        checkForWord("Hello");
         //  System.out.print(checkForWord("garbage"));
         //hello
     }
@@ -64,15 +67,15 @@ public class Word {
     int randomIndex = (int) (Math.random() * possibleWords.size());
     return possibleWords.get(randomIndex);
  }
- public static boolean checkForWord(String word) {
-   ArrayList<String> words = getAllWords();
-   for (int i = 0; i < words.size(); i++) {
-       if (words.get(i).equals(word)) {
-           return true;
-       }
-   }
-   return false;
- }
+    // public static boolean checkForWord(String word) {
+    // ArrayList<String> words = getAllWords();
+    // for (int i = 0; i < words.size(); i++) {
+    //     if (words.get(i).equals(word)) {
+    //         return true;
+    //     }
+    // }
+    // return false;
+    // }
 
 
 //Cleans up word so that it is just the word returned
@@ -119,7 +122,40 @@ public static void swap(int i, int j, ArrayList<String> inArray){
         return result;
 }
 
+public static String getFirstLetterHint(String word) {
+    return word.substring(0, 1);
+
 }
+
+public static String spaceOut(String scrambledWord) {
+    String spacedOutWord = "";
+    for (int i = 0; i < scrambledWord.length(); i++) {
+            spacedOutWord = spacedOutWord + scrambledWord.substring(i, i+1) + " ";
+    }
+    return spacedOutWord;
+
+}
+
+ public static void checkForWord(String word) {
+     String apiUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+     try {
+        HttpRequest request = HttpRequest.newBuilder()
+		.uri(URI.create(apiUrl+word))
+		.method("GET", HttpRequest.BodyPublishers.noBody())
+		.build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+        // URL url = new URL(apiUrl);
+        System.out.print(response.body());
+     } catch (MalformedURLException e) {
+         System.out.println(e);
+     } catch (IOException e) {
+         System.out.println(e);
+     } catch (InterruptedException e) {
+
+     }
+    }
+
 
 //  public static String getWord(int wordLength) {
 //      String apiUrl = "https://random-word-api.herokuapp.com/word";
@@ -153,28 +189,4 @@ public static void swap(int i, int j, ArrayList<String> inArray){
 //      }
 //  }
 
-//  public static boolean checkForWord(String word) {
-//      String apiUrl = "https://wordsapiv1.p.mashape.com/words/";
-//      try {
-//         HttpRequest request = HttpRequest.newBuilder()
-// 		.uri(URI.create("https://wordsapiv1.p.rapidapi.com/words/hatchback/typeOf"))
-// 		.header("X-RapidAPI-Host", "wordsapiv1.p.rapidapi.com")
-// 		.header("X-RapidAPI-Key", "da1ecf025amsh6c9c8ed28036583p11fd95jsn2031ab70a216")
-// 		.method("GET", HttpRequest.BodyPublishers.noBody())
-// 		.build();
-//         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-//         System.out.println(response.body());
-//         // URL url = new URL(apiUrl);
-//         System.out.print(response);
-
-//         return true;
-//      } catch (MalformedURLException e) {
-//          System.out.println(e);
-//          return false;
-//      } catch (IOException e) {
-//          System.out.println(e);
-//          return false;
-//      } catch (InterruptedException e) {
-//          return false;
-//      }
-//  }
+ }
