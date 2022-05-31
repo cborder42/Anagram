@@ -156,37 +156,19 @@ public static String spaceOut(String scrambledWord) {
      }
     }
 
-
-//  public static String getWord(int wordLength) {
-//      String apiUrl = "https://random-word-api.herokuapp.com/word";
-//      try {
-//         URL url = new URL(apiUrl+"?length="+wordLength);
-//         // URL url = new URL(apiUrl);
-//         HttpURLConnection con = (HttpsURLConnection) url.openConnection();
-//         con.setRequestMethod("GET");
-//         // int response = con.getResponseCode();
-//         // System.out.print(response);
-//         BufferedReader in = new BufferedReader(
-//             new InputStreamReader(con.getInputStream())
-//         );
-//         String inputLine;
-//         StringBuffer content = new StringBuffer();
-//         while((inputLine = in.readLine()) != null) {
-//             content.append(inputLine);
-//         }
-
-//         in.close();
-//         con.disconnect();
-//         String word = content.toString();
-//         return clean(word);
-
-//      } catch (MalformedURLException e) {
-//          System.out.println(e);
-//          return null;
-//      } catch (IOException e) {
-//          System.out.println(e);
-//          return null;
-//      }
-//  }
+public static boolean checkCharacters(String first, String second){
+    for (int i = 0; i < first.length(); i++){
+        for (int k = 0; k < second.length(); k++){
+            if (first.substring(i, i+1).equals(second.substring(k, k+1))){
+                first = first.substring(0, i) + "_" + first.substring(i+1);
+                second = second.substring(0, k) + "_" + second.substring(k+1);
+            }
+        }
+    }
+    if(first.equals(second)){
+        return true;
+    }
+    return false;
+}
 
  }
