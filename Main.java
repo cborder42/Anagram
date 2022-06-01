@@ -28,13 +28,19 @@ public static void GUI(){
         Font enterGuess = new Font("Sans Serif", Font.PLAIN, 24);
         Font hint = new Font("Sans Serif", Font.PLAIN, 20);
         
+        //Create objects
+        Game game = new Game();
+        Word word = new Word(game.getLength());
+        JLabel scrambled = new JLabel(Word.spaceOut(word.getScrambledWord()));
+        scrambled.setFont(fontUnscramble);
+        
         //Section 1 (JLabel)
         JLabel title = new JLabel("One Word Anagram");
         title.setFont(fontTitle);
         JLabel instruction = new JLabel("Enter guess:");
         instruction.setFont(enterGuess);
         JLabel levelCounter = new JLabel("Level: ");
-        JLabel hintCounter = new JLabel("Hint: ");
+        JLabel hintCounter = new JLabel("Hints: " + game.getHint() + "  ");
         JLabel scoreCounter = new JLabel("Score: ");
         
         //Section 2 (JTextField)
@@ -47,12 +53,6 @@ public static void GUI(){
         hintButton.setBackground(Color.green);
         JButton enterGuessButton = new JButton("Enter");
         enterGuessButton.setBackground(Color.green);
-
-
-        Game game = new Game();
-        Word word = new Word(game.getLength());
-        JLabel scrambled = new JLabel(Word.spaceOut(word.getScrambledWord()));
-        scrambled.setFont(fontUnscramble);
         
         // Labels
         JLabel wrongResponse = new JLabel(" ");
