@@ -136,26 +136,28 @@ public static String spaceOut(String scrambledWord) {
 
 }
 
- public static void checkForWord(String word) {
+public static boolean checkForWord(String word) {
      String apiUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/";
      try {
         HttpRequest request = HttpRequest.newBuilder()
-		.uri(URI.create(apiUrl+word))
-		.method("GET", HttpRequest.BodyPublishers.noBody())
-		.build();
+        .uri(URI.create(apiUrl+word))
+        .method("GET", HttpRequest.BodyPublishers.noBody())
+        .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
-        // URL url = new URL(apiUrl);
-        System.out.print(response.body());
-     } catch (MalformedURLException e) {
+         if (response.body().indexOf(word) == -1){
+             return false;
+         }
+     } 
+     catch (MalformedURLException e) {
          System.out.println(e);
      } catch (IOException e) {
          System.out.println(e);
      } catch (InterruptedException e) {
-
+         System.out.println(e);
      }
-    }
-
+     return true;
+ }
+	
 public static boolean checkCharacters(String first, String second){
     for (int i = 0; i < first.length(); i++){
         for (int k = 0; k < second.length(); k++){
