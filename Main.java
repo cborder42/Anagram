@@ -39,9 +39,9 @@ public static void GUI(){
         title.setFont(fontTitle);
         JLabel instruction = new JLabel("Enter guess:");
         instruction.setFont(enterGuess);
-        JLabel levelCounter = new JLabel("Level: ");
+        JLabel levelCounter = new JLabel("Level: " + game.getLevel() + "  ");
         JLabel hintCounter = new JLabel("Hints: " + game.getHint() + "  ");
-        JLabel scoreCounter = new JLabel("Score: ");
+        JLabel scoreCounter = new JLabel("Score: " + game.getScore() + "  ");
         
         //Section 2 (JTextField)
         JTextField textField = new JTextField();
@@ -178,6 +178,8 @@ public static void GUI(){
                     } 
                     else {
                         if (checkWord(word.getWord(), guess)){
+                            game.incrLevel();
+                            levelCounter.setText("Level: " + game.getLevel() + "  ");
                             layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
                                 .addComponent(title)
                                 .addGroup(layout.createSequentialGroup()
@@ -331,6 +333,8 @@ public static void GUI(){
                     } 
                     else {
                         if (checkWord(word.getWord(), guess)){
+                            game.incrLevel();
+                            levelCounter.setText("Level: " + game.getLevel() + "  ");
                             layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
                                 .addComponent(title)
                                 .addGroup(layout.createSequentialGroup()
