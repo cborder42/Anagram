@@ -34,7 +34,7 @@ public class Game{
     }
 
     public void incrScore() {
-        score+=500;
+        score+=length*500;
     }
     
     public int getHint(){

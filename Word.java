@@ -23,7 +23,7 @@ public class Word {
 
     public static void main(String[] args) {
         spaceOut("hello");
-        System.out.println(checkForWord("HELLO"));
+        System.out.println(checkForWord("hello"));
         System.out.println(checkCharacters("Hello", "helloo"));
     }
     
@@ -118,18 +118,24 @@ public class Word {
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-            if (response.body().indexOf(word.toLowerCase()) == -1){
+            System.out.print(response.body());
+            if (response.body().indexOf("No Definitions Found") != -1){
+                System.out.print("NO WORD FOUND");
                 return false;
             }
+            return true;
+            
         } 
         catch (MalformedURLException e) {
             System.out.println(e);
+            return false;
         } catch (IOException e) {
             System.out.println(e);
+            return false;
         } catch (InterruptedException e) {
             System.out.println(e);
+            return false;
         }
-        return true;
     }
 
     public static boolean checkCharacters(String first, String second){
