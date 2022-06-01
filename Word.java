@@ -16,6 +16,9 @@ public class Word {
     public Word(int length) {
         word = getWordFromFile(length);
         scrambledWord = listToString(scramble(word));
+	while (scrambledWord.equals(word)){
+            scrambledWord = listToString(scramble(word));
+        }
     }
 
     public static void main(String[] args) { //  System.out.print(getWord(9));
@@ -24,6 +27,7 @@ public class Word {
         //  System.out.print(checkForWord("garbage"));
         //hello
     }
+	
     public String getWord(){
         return word;
     }
@@ -35,10 +39,11 @@ public class Word {
     public void update(int length) {
         word = getWordFromFile(length);
         scrambledWord = listToString(scramble(word));
+	while (scrambledWord.equals(word)){
+            scrambledWord = listToString(scramble(word));
+        }
     }
     
-
- //EasyMode 
  public static ArrayList<String> getAllWords() {
     File file = new File("./words.txt");
 
