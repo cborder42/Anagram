@@ -424,7 +424,7 @@ public static void GUI(){
         hintButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if (game.getHint() > 0){
-                    hintResponse.setText("First letter of the word: " + word.getWord().substring(0, 1));
+                    hintResponse.setText("First letter: " + word.getWord().substring(0, 1));
                     game.decrHint();
                     hintCounter.setText("Hints " + game.getHint() + "  ");
                     layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
