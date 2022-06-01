@@ -33,8 +33,8 @@ public class Game{
         return score;
     }
 
-    public void incrScore() {
-        score+=length*500;
+    public void incrScore(int input) {
+        score+=input;
     }
     
     public int getHint(){
