@@ -426,7 +426,7 @@ public static void GUI(){
                 if (game.getHint() > 0){
                     hintResponse.setText("First letter: " + word.getWord().substring(0, 1));
                     game.decrHint();
-                    hintCounter.setText("Hints " + game.getHint() + "  ");
+                    hintCounter.setText("Hints: " + game.getHint() + "  ");
                     layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
                         .addComponent(title)
                         .addGroup(layout.createSequentialGroup()
