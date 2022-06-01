@@ -21,8 +21,16 @@ public class Game{
         length++;
     }
     
+    public int getLevel(){
+        return level;
+    }
+    
     public void incrLevel() {
         level++;
+    }
+    
+    public int getScore(){
+        return score;
     }
 
     public void incrScore() {
