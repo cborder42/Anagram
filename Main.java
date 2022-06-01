@@ -46,7 +46,7 @@ public static void GUI(){
         //Section 2 (JTextField)
         JTextField textField = new JTextField();
         textField.setForeground(Color.LIGHT_GRAY);
-        textField.setFont(enterGuess);
+        textField.setFont(hint);
 
         //Section 3(JButtons)
         JButton hintButton = new JButton("Hint");
@@ -90,7 +90,7 @@ public static void GUI(){
                 .addComponent(scoreCounter))
             .addComponent(scrambled)
             .addGroup(layout.createParallelGroup(CENTER)
-                .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                .addComponent(textField, 0, 30, GroupLayout.PREFERRED_SIZE))
             .addComponent(enterGuessButton)
             .addComponent(wrongResponse)
             .addComponent(hintButton));   
@@ -130,7 +130,7 @@ public static void GUI(){
                                 .addComponent(scoreCounter))
                             .addComponent(scrambled)
                             .addGroup(layout.createParallelGroup(CENTER)
-                                .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(textField, 0, 30, GroupLayout.PREFERRED_SIZE))
                             .addComponent(enterGuessButton)
                             .addComponent(wrongResponse)
                             .addComponent(hintResponse));
@@ -165,7 +165,7 @@ public static void GUI(){
                                 .addComponent(scoreCounter))
                             .addComponent(scrambled)
                             .addGroup(layout.createParallelGroup(CENTER)
-                                .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(textField, 0, 30, GroupLayout.PREFERRED_SIZE))
                             .addComponent(enterGuessButton)
                             .addComponent(wrongResponse)
                             .addComponent(hintResponse));
@@ -201,7 +201,7 @@ public static void GUI(){
                                     .addComponent(scoreCounter))
                                 .addComponent(scrambled)
                                 .addGroup(layout.createParallelGroup(CENTER)
-                                    .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(textField, 0, 30, GroupLayout.PREFERRED_SIZE))
                                 .addComponent(enterGuessButton)
                                 .addComponent(correctResponse)
                                 .addComponent(hintButton));
@@ -240,7 +240,7 @@ public static void GUI(){
                                     .addComponent(scoreCounter))
                                 .addComponent(scrambled)
                                 .addGroup(layout.createParallelGroup(CENTER)
-                                    .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(textField, 0, 30, GroupLayout.PREFERRED_SIZE))
                                 .addComponent(enterGuessButton)
                                 .addComponent(wrongResponse)
                                 .addComponent(hintResponse));
@@ -285,7 +285,7 @@ public static void GUI(){
                                 .addComponent(scoreCounter))
                             .addComponent(scrambled)
                             .addGroup(layout.createParallelGroup(CENTER)
-                                .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(textField, 0, 30, GroupLayout.PREFERRED_SIZE))
                             .addComponent(enterGuessButton)
                             .addComponent(wrongResponse)
                             .addComponent(hintResponse));
@@ -320,7 +320,7 @@ public static void GUI(){
                                 .addComponent(scoreCounter))
                             .addComponent(scrambled)
                             .addGroup(layout.createParallelGroup(CENTER)
-                                .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(textField, 0, 30, GroupLayout.PREFERRED_SIZE))
                             .addComponent(enterGuessButton)
                             .addComponent(wrongResponse)
                             .addComponent(hintResponse));
@@ -356,7 +356,7 @@ public static void GUI(){
                                     .addComponent(scoreCounter))
                                 .addComponent(scrambled)
                                 .addGroup(layout.createParallelGroup(CENTER)
-                                    .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(textField, 0, 30, GroupLayout.PREFERRED_SIZE))
                                 .addComponent(enterGuessButton)
                                 .addComponent(correctResponse)
                                 .addComponent(hintButton));
@@ -395,7 +395,7 @@ public static void GUI(){
                                     .addComponent(scoreCounter))
                                 .addComponent(scrambled)
                                 .addGroup(layout.createParallelGroup(CENTER)
-                                    .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(textField, 0, 30, GroupLayout.PREFERRED_SIZE))
                                 .addComponent(enterGuessButton)
                                 .addComponent(wrongResponse)
                                 .addComponent(hintResponse));
@@ -437,7 +437,7 @@ public static void GUI(){
                             .addComponent(scoreCounter))
                         .addComponent(scrambled)
                         .addGroup(layout.createParallelGroup(CENTER)
-                            .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textField, 0, 30, GroupLayout.PREFERRED_SIZE))
                         .addComponent(enterGuessButton)
                         .addComponent(hintResponse));
                 
@@ -471,7 +471,7 @@ public static void GUI(){
                             .addComponent(scoreCounter))
                         .addComponent(scrambled)
                         .addGroup(layout.createParallelGroup(CENTER)
-                            .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textField, 0, 30, GroupLayout.PREFERRED_SIZE))
                         .addComponent(enterGuessButton)
                         .addComponent(hintResponse));
                 
