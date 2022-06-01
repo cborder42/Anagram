@@ -56,14 +56,13 @@ public static void GUI(){
         // textField.setSize(50, 20);
 
         //Section 3(JButtons)
-        JButton hintButton = new JButton("Hint");
+        JButton hintButton = new JButton("First Letter Hint");
         ImageIcon guessIcon = new ImageIcon("./guessbutton.png");
         
         // hintButton.setBackground(Color.green);
         JButton enterGuessButton = new JButton(guessIcon);
         enterGuessButton.setOpaque(true);
         enterGuessButton.setBorderPainted(false);
-        // enterGuessButton.setSize(50,20);
         
         // Labels
         JLabel wrongResponse = new JLabel(" ");
