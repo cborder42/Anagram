@@ -118,24 +118,18 @@ public class Word {
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.print(response.body());
-            if (response.body().indexOf("No Definitions Found") != -1){
-                System.out.print("NO WORD FOUND");
+            if (response.body().indexOf(word.toLowerCase()) == -1){
                 return false;
             }
-            return true;
-            
         } 
         catch (MalformedURLException e) {
             System.out.println(e);
-            return false;
         } catch (IOException e) {
             System.out.println(e);
-            return false;
         } catch (InterruptedException e) {
             System.out.println(e);
-            return false;
         }
+        return true;
     }
 
     public static boolean checkCharacters(String first, String second){
