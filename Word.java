@@ -159,18 +159,25 @@ public static boolean checkForWord(String word) {
  }
 	
 public static boolean checkCharacters(String first, String second){
-    for (int i = 0; i < first.length(); i++){
-        for (int k = 0; k < second.length(); k++){
-            if (first.substring(i, i+1).equals(second.substring(k, k+1))){
-                first = first.substring(0, i) + "_" + first.substring(i+1);
-                second = second.substring(0, k) + "_" + second.substring(k+1);
+    first = first.toLowerCase();
+    second = second.toLowerCase();
+    ArrayList<String> firstWord = new ArrayList<String>();
+        for (int i = 0; i < first.length(); i++){
+            firstWord.add(first.substring(i, i + 1)); 
+        }
+    ArrayList<String> secondWord = new ArrayList<String>();
+        for (int j = 0; j < second.length(); j++){
+            secondWord.add(second.substring(j, j + 1)); 
+        }
+    for (int f = 0; f < firstWord.size(); f++){
+        for (int s = 0; s < secondWord.size(); s++){
+            if (firstWord.get(f).equals(secondWord.get(s))){
+                secondWord.remove(s);
             }
         }
     }
-    if(first.equals(second)){
+    if(secondWord.size() == 0){
         return true;
     }
     return false;
 }
-
- }
