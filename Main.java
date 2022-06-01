@@ -53,7 +53,6 @@ public static void GUI(){
         JTextField textField = new JTextField();
         textField.setForeground(Color.LIGHT_GRAY);
         textField.setFont(hint);
-        // textField.setSize(50, 20);
 
         //Section 3(JButtons)
         JButton hintButton = new JButton("First Letter Hint");
@@ -190,6 +189,8 @@ public static void GUI(){
                         if (checkWord(word.getWord(), guess)){
                             game.incrLevel();
                             levelCounter.setText("Level: " + game.getLevel() + "  ");
+                            game.incrScore(guess.length() * game.getLevel() * 10);
+                            scoreCounter.setText("Score: " + game.getScore() + "  ");
                             layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
                                 .addComponent(title)
                                 .addGroup(layout.createSequentialGroup()
@@ -346,6 +347,8 @@ public static void GUI(){
                         if (checkWord(word.getWord(), guess)){
                             game.incrLevel();
                             levelCounter.setText("Level: " + game.getLevel() + "  ");
+                            game.incrScore(guess.length() * game.getLevel() * 10);
+                            scoreCounter.setText("Score: " + game.getScore() + "  ");
                             layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
                                 .addComponent(title)
                                 .addGroup(layout.createSequentialGroup()
