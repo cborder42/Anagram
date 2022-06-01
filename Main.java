@@ -218,6 +218,7 @@ public static void GUI(){
                         
                             panel.remove(wrongResponse);
                             panel.remove(hintResponse);
+                            hintResponse.setText(" ");
                             frame.pack();
                             panel.setVisible(true);
                             panel.revalidate();
@@ -373,6 +374,7 @@ public static void GUI(){
                         
                             panel.remove(wrongResponse);
                             panel.remove(hintResponse);
+                            hintResponse.setText(" ");
                             frame.pack();
                             panel.setVisible(true);
                             panel.revalidate();
