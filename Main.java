@@ -408,39 +408,77 @@ public static void GUI(){
 // HINT
         hintButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-            hintResponse.setText(word.getWord().substring(0, 1));
-            layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
-                .addComponent(title)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(levelCounter)
-                    .addComponent(hintCounter)
-                    .addComponent(scoreCounter))
-                .addComponent(scrambled)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(textField, 0, 200, GroupLayout.PREFERRED_SIZE))
-                .addComponent(enterGuessButton)
-                .addComponent(hintResponse));
+                if (game.getHint() > 0){
+                    hintResponse.setText("First letter of the word: " + word.getWord().substring(0, 1));
+                    game.decrHint();
+                    hintCounter.setText("Hints " + game.getHint());
+                    layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+                        .addComponent(title)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(levelCounter)
+                            .addComponent(hintCounter)
+                            .addComponent(scoreCounter))
+                        .addComponent(scrambled)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(textField, 0, 200, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(enterGuessButton)
+                        .addComponent(hintResponse));
                     
                     
-            layout.setVerticalGroup(layout.createSequentialGroup()
-                .addComponent(title)
-                .addGroup(layout.createParallelGroup(CENTER)
-                    .addComponent(levelCounter)
-                    .addComponent(hintCounter)
-                    .addComponent(scoreCounter))
-                .addComponent(scrambled)
-                .addGroup(layout.createParallelGroup(CENTER)
-                    .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
-                .addComponent(enterGuessButton)
-                .addComponent(hintResponse));
+                    layout.setVerticalGroup(layout.createSequentialGroup()
+                        .addComponent(title)
+                        .addGroup(layout.createParallelGroup(CENTER)
+                            .addComponent(levelCounter)
+                            .addComponent(hintCounter)
+                            .addComponent(scoreCounter))
+                        .addComponent(scrambled)
+                        .addGroup(layout.createParallelGroup(CENTER)
+                            .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(enterGuessButton)
+                        .addComponent(hintResponse));
                 
-                panel.remove(correctResponse);
-                panel.remove(wrongResponse);
-                panel.remove(hintButton);
-                        frame.pack();
-                        panel.setVisible(true);
-                        panel.revalidate();
-                        panel.repaint();
+                    panel.remove(correctResponse);
+                    panel.remove(wrongResponse);
+                    panel.remove(hintButton);
+                    frame.pack();
+                    panel.setVisible(true);
+                    panel.revalidate();
+                    panel.repaint();
+                } else {
+                    hintResponse.setText("You don't have any hints left!");
+                    layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+                        .addComponent(title)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(levelCounter)
+                            .addComponent(hintCounter)
+                            .addComponent(scoreCounter))
+                        .addComponent(scrambled)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(textField, 0, 200, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(enterGuessButton)
+                        .addComponent(hintResponse));
+                    
+                    
+                    layout.setVerticalGroup(layout.createSequentialGroup()
+                        .addComponent(title)
+                        .addGroup(layout.createParallelGroup(CENTER)
+                            .addComponent(levelCounter)
+                            .addComponent(hintCounter)
+                            .addComponent(scoreCounter))
+                        .addComponent(scrambled)
+                        .addGroup(layout.createParallelGroup(CENTER)
+                            .addComponent(textField, 0, 25, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(enterGuessButton)
+                        .addComponent(hintResponse));
+                
+                    panel.remove(correctResponse);
+                    panel.remove(wrongResponse);
+                    panel.remove(hintButton);
+                    frame.pack();
+                    panel.setVisible(true);
+                    panel.revalidate();
+                    panel.repaint();                
+                }
             }
         });
     
