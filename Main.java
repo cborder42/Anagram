@@ -49,7 +49,7 @@ public static void GUI(){
         textField.setFont(hint);
 
         //Section 3(JButtons)
-        JButton hintButton = new JButton("Hint");
+        JButton hintButton = new JButton("First Letter Hint");
         hintButton.setBackground(Color.green);
         JButton enterGuessButton = new JButton("Enter");
         enterGuessButton.setBackground(Color.green);
@@ -413,7 +413,7 @@ public static void GUI(){
         hintButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if (game.getHint() > 0){
-                    hintResponse.setText("First letter of the word: " + word.getWord().substring(0, 1));
+                    hintResponse.setText("First letter: " + word.getWord().substring(0, 1));
                     game.decrHint();
                     hintCounter.setText("Hints " + game.getHint() + "  ");
                     layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
