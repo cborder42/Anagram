@@ -147,6 +147,7 @@ public class Word {
             for (int s = 0; s < secondWord.size(); s++){
                 if (firstWord.get(f).equals(secondWord.get(s))){
                     secondWord.remove(s);
+                    firstWord.set(f, "");
                 }
             }
         }
