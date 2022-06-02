@@ -44,10 +44,15 @@ public static void GUI(){
         JLabel instruction = new JLabel("Enter guess:");
         instruction.setFont(enterGuess);
         JLabel levelCounter = new JLabel("Level: " + game.getLevel() + "  ");
+        JLabel livesCounter = new JLabel("Lives: " + game.getLives() + "  ");
         JLabel hintCounter = new JLabel("Hints: " + game.getHint() + "  ");
         JLabel scoreCounter = new JLabel("Score: " + game.getScore() + "  ");
-        hintCounter.setBorder(new EmptyBorder(0, 50, 0, 50));
+        levelCounter.setBorder(new EmptyBorder(0, 50, 0, 0));
+        hintCounter.setBorder(new EmptyBorder(0, 25, 0, 50));
+        livesCounter.setBorder(new EmptyBorder(0, 50, 0, 25));
+        scoreCounter.setBorder(new EmptyBorder(0, 0, 0, 50));
         levelCounter.setFont(counters);
+        livesCounter.setFont(counters);
         hintCounter.setFont(counters);
         scoreCounter.setFont(counters);
         
