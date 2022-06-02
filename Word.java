@@ -118,7 +118,7 @@ public class Word {
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-            if (response.body().indexOf(word.toLowerCase()) == -1){
+            if (response.body().indexOf("No Definitions Found") != -1){
                 return false;
             }
         } 
