@@ -91,6 +91,7 @@ public static void GUI(){
             .addComponent(title)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(levelCounter)
+                .addComponent(livesCounter)
                 .addComponent(hintCounter)
                 .addComponent(scoreCounter))
             .addComponent(scrambled)
@@ -105,6 +106,7 @@ public static void GUI(){
             .addComponent(title)
             .addGroup(layout.createParallelGroup(CENTER)
                 .addComponent(levelCounter)
+                .addComponent(livesCounter)
                 .addComponent(hintCounter)
                 .addComponent(scoreCounter))
             .addComponent(scrambled)
@@ -132,6 +134,7 @@ public static void GUI(){
                             .addComponent(title)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(levelCounter)
+                                .addComponent(livesCounter)
                                 .addComponent(hintCounter)  
                                 .addComponent(scoreCounter))
                             .addComponent(scrambled)
@@ -145,6 +148,7 @@ public static void GUI(){
                             .addComponent(title)
                             .addGroup(layout.createParallelGroup(CENTER)
                                 .addComponent(levelCounter)
+                                .addComponent(livesCounter)
                                 .addComponent(hintCounter)
                                 .addComponent(scoreCounter))
                             .addComponent(scrambled)
@@ -167,6 +171,7 @@ public static void GUI(){
                             .addComponent(title)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(levelCounter)
+                                .addComponent(livesCounter)
                                 .addComponent(hintCounter)  
                                 .addComponent(scoreCounter))
                             .addComponent(scrambled)
@@ -180,6 +185,7 @@ public static void GUI(){
                             .addComponent(title)
                             .addGroup(layout.createParallelGroup(CENTER)
                                 .addComponent(levelCounter)
+                                .addComponent(livesCounter)
                                 .addComponent(hintCounter)
                                 .addComponent(scoreCounter))
                             .addComponent(scrambled)
@@ -207,6 +213,7 @@ public static void GUI(){
                                     .addComponent(title)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
                                         .addComponent(hintCounter)
                                         .addComponent(scoreCounter))
                                     .addComponent(scrambled)
@@ -220,6 +227,7 @@ public static void GUI(){
                                     .addComponent(title)
                                     .addGroup(layout.createParallelGroup(CENTER)
                                         .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
                                         .addComponent(hintCounter)
                                         .addComponent(scoreCounter))
                                     .addComponent(scrambled)
@@ -236,7 +244,7 @@ public static void GUI(){
                                 panel.setVisible(true);
                                 panel.revalidate();
                                 panel.repaint();
-                        
+                                
                                 if (game.getLength() < 12){
                                     game.incrLength();
                                 } else{
@@ -258,6 +266,7 @@ public static void GUI(){
                                     .addComponent(title)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
                                         .addComponent(hintCounter)
                                         .addComponent(scoreCounter))
                                     .addComponent(scrambled)
@@ -271,6 +280,7 @@ public static void GUI(){
                                     .addComponent(title)
                                     .addGroup(layout.createParallelGroup(CENTER)
                                         .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
                                         .addComponent(hintCounter)
                                         .addComponent(scoreCounter))
                                     .addComponent(scrambled)
@@ -292,6 +302,7 @@ public static void GUI(){
                                     .addComponent(title)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
                                         .addComponent(hintCounter)
                                         .addComponent(scoreCounter))
                                     .addComponent(scrambled)
@@ -305,6 +316,7 @@ public static void GUI(){
                                     .addComponent(title)
                                     .addGroup(layout.createParallelGroup(CENTER)
                                         .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
                                         .addComponent(hintCounter)
                                         .addComponent(scoreCounter))
                                     .addComponent(scrambled)
@@ -327,6 +339,7 @@ public static void GUI(){
                                 .addComponent(title)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(levelCounter)
+                                    .addComponent(livesCounter)
                                     .addComponent(hintCounter)  
                                     .addComponent(scoreCounter))
                                 .addComponent(scrambled)
@@ -340,6 +353,7 @@ public static void GUI(){
                                 .addComponent(title)
                                 .addGroup(layout.createParallelGroup(CENTER)
                                     .addComponent(levelCounter)
+                                    .addComponent(livesCounter)
                                     .addComponent(hintCounter)
                                     .addComponent(scoreCounter))
                                 .addComponent(scrambled)
@@ -368,10 +382,11 @@ public static void GUI(){
                 layout.setAutoCreateContainerGaps(true); 
                 if (guess.equals("")){
                     wrongResponse.setText("Please enter a guess...");
-                    layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+                        layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
                             .addComponent(title)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(levelCounter)
+                                .addComponent(livesCounter)
                                 .addComponent(hintCounter)  
                                 .addComponent(scoreCounter))
                             .addComponent(scrambled)
@@ -385,6 +400,7 @@ public static void GUI(){
                             .addComponent(title)
                             .addGroup(layout.createParallelGroup(CENTER)
                                 .addComponent(levelCounter)
+                                .addComponent(livesCounter)
                                 .addComponent(hintCounter)
                                 .addComponent(scoreCounter))
                             .addComponent(scrambled)
@@ -407,6 +423,7 @@ public static void GUI(){
                             .addComponent(title)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(levelCounter)
+                                .addComponent(livesCounter)
                                 .addComponent(hintCounter)  
                                 .addComponent(scoreCounter))
                             .addComponent(scrambled)
@@ -420,6 +437,7 @@ public static void GUI(){
                             .addComponent(title)
                             .addGroup(layout.createParallelGroup(CENTER)
                                 .addComponent(levelCounter)
+                                .addComponent(livesCounter)
                                 .addComponent(hintCounter)
                                 .addComponent(scoreCounter))
                             .addComponent(scrambled)
@@ -447,6 +465,7 @@ public static void GUI(){
                                     .addComponent(title)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
                                         .addComponent(hintCounter)
                                         .addComponent(scoreCounter))
                                     .addComponent(scrambled)
@@ -460,6 +479,7 @@ public static void GUI(){
                                     .addComponent(title)
                                     .addGroup(layout.createParallelGroup(CENTER)
                                         .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
                                         .addComponent(hintCounter)
                                         .addComponent(scoreCounter))
                                     .addComponent(scrambled)
@@ -476,7 +496,7 @@ public static void GUI(){
                                 panel.setVisible(true);
                                 panel.revalidate();
                                 panel.repaint();
-                        
+                                
                                 if (game.getLength() < 12){
                                     game.incrLength();
                                 } else{
@@ -498,6 +518,7 @@ public static void GUI(){
                                     .addComponent(title)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
                                         .addComponent(hintCounter)
                                         .addComponent(scoreCounter))
                                     .addComponent(scrambled)
@@ -511,6 +532,7 @@ public static void GUI(){
                                     .addComponent(title)
                                     .addGroup(layout.createParallelGroup(CENTER)
                                         .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
                                         .addComponent(hintCounter)
                                         .addComponent(scoreCounter))
                                     .addComponent(scrambled)
@@ -532,6 +554,7 @@ public static void GUI(){
                                     .addComponent(title)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
                                         .addComponent(hintCounter)
                                         .addComponent(scoreCounter))
                                     .addComponent(scrambled)
@@ -545,6 +568,7 @@ public static void GUI(){
                                     .addComponent(title)
                                     .addGroup(layout.createParallelGroup(CENTER)
                                         .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
                                         .addComponent(hintCounter)
                                         .addComponent(scoreCounter))
                                     .addComponent(scrambled)
@@ -567,6 +591,7 @@ public static void GUI(){
                                 .addComponent(title)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(levelCounter)
+                                    .addComponent(livesCounter)
                                     .addComponent(hintCounter)  
                                     .addComponent(scoreCounter))
                                 .addComponent(scrambled)
@@ -580,6 +605,7 @@ public static void GUI(){
                                 .addComponent(title)
                                 .addGroup(layout.createParallelGroup(CENTER)
                                     .addComponent(levelCounter)
+                                    .addComponent(livesCounter)
                                     .addComponent(hintCounter)
                                     .addComponent(scoreCounter))
                                 .addComponent(scrambled)
@@ -598,7 +624,7 @@ public static void GUI(){
                     }
                 }
         }});
-
+        
 // HINT
         hintButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
@@ -610,6 +636,7 @@ public static void GUI(){
                         .addComponent(title)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(levelCounter)
+                            .addComponent(livesCounter)
                             .addComponent(hintCounter)
                             .addComponent(scoreCounter))
                         .addComponent(scrambled)
@@ -623,6 +650,7 @@ public static void GUI(){
                         .addComponent(title)
                         .addGroup(layout.createParallelGroup(CENTER)
                             .addComponent(levelCounter)
+                            .addComponent(livesCounter)
                             .addComponent(hintCounter)
                             .addComponent(scoreCounter))
                         .addComponent(scrambled)
@@ -644,6 +672,7 @@ public static void GUI(){
                         .addComponent(title)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(levelCounter)
+                            .addComponent(livesCounter)
                             .addComponent(hintCounter)
                             .addComponent(scoreCounter))
                         .addComponent(scrambled)
@@ -657,6 +686,7 @@ public static void GUI(){
                         .addComponent(title)
                         .addGroup(layout.createParallelGroup(CENTER)
                             .addComponent(levelCounter)
+                            .addComponent(livesCounter)
                             .addComponent(hintCounter)
                             .addComponent(scoreCounter))
                         .addComponent(scrambled)
