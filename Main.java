@@ -158,11 +158,47 @@ public static void GUI(){
                             .addComponent(wrongResponse)
                             .addComponent(hintResponse));
 
-                        panel.remove(correctResponse);
-                        frame.pack();
-                        panel.setVisible(true);
-                        panel.revalidate();
-                        panel.repaint();
+                    panel.remove(correctResponse);
+                    frame.pack();
+                    panel.setVisible(true);
+                    panel.revalidate();
+                    panel.repaint();
+                }
+                else if (guess.length() == 1){
+                    wrongResponse.setText("Please enter more than one letter");
+                        layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+                            .addComponent(title)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(levelCounter)
+                                .addComponent(livesCounter)
+                                .addComponent(hintCounter)  
+                                .addComponent(scoreCounter))
+                            .addComponent(scrambled)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textField, 0, 305, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(enterGuessButton)
+                            .addComponent(wrongResponse)
+                            .addComponent(hintResponse));
+                    
+                        layout.setVerticalGroup(layout.createSequentialGroup()
+                            .addComponent(title)
+                            .addGroup(layout.createParallelGroup(CENTER)
+                                .addComponent(levelCounter)
+                                .addComponent(livesCounter)
+                                .addComponent(hintCounter)
+                                .addComponent(scoreCounter))
+                            .addComponent(scrambled)
+                            .addGroup(layout.createParallelGroup(CENTER)
+                                .addComponent(textField, 0, 45, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(enterGuessButton)
+                            .addComponent(wrongResponse)
+                            .addComponent(hintResponse));
+
+                    panel.remove(correctResponse);
+                    frame.pack();
+                    panel.setVisible(true);
+                    panel.revalidate();
+                    panel.repaint();
                 }
                 else {
                     if (!Word.checkCharacters(word.getWord(), guess)){
@@ -410,11 +446,47 @@ public static void GUI(){
                             .addComponent(wrongResponse)
                             .addComponent(hintResponse));
 
-                        panel.remove(correctResponse);
-                        frame.pack();
-                        panel.setVisible(true);
-                        panel.revalidate();
-                        panel.repaint();
+                    panel.remove(correctResponse);
+                    frame.pack();
+                    panel.setVisible(true);
+                    panel.revalidate();
+                    panel.repaint();
+                }
+                else if (guess.length() == 1){
+                    wrongResponse.setText("Please enter more than one letter");
+                        layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+                            .addComponent(title)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(levelCounter)
+                                .addComponent(livesCounter)
+                                .addComponent(hintCounter)  
+                                .addComponent(scoreCounter))
+                            .addComponent(scrambled)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textField, 0, 305, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(enterGuessButton)
+                            .addComponent(wrongResponse)
+                            .addComponent(hintResponse));
+                    
+                        layout.setVerticalGroup(layout.createSequentialGroup()
+                            .addComponent(title)
+                            .addGroup(layout.createParallelGroup(CENTER)
+                                .addComponent(levelCounter)
+                                .addComponent(livesCounter)
+                                .addComponent(hintCounter)
+                                .addComponent(scoreCounter))
+                            .addComponent(scrambled)
+                            .addGroup(layout.createParallelGroup(CENTER)
+                                .addComponent(textField, 0, 45, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(enterGuessButton)
+                            .addComponent(wrongResponse)
+                            .addComponent(hintResponse));
+
+                    panel.remove(correctResponse);
+                    frame.pack();
+                    panel.setVisible(true);
+                    panel.revalidate();
+                    panel.repaint();
                 }
                 else {
                     if (!Word.checkCharacters(word.getWord(), guess)){
