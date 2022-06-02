@@ -232,7 +232,11 @@ public static void GUI(){
                                 panel.revalidate();
                                 panel.repaint();
                         
-                                game.incrLength();
+                                if (game.getLength() < 12){
+                                    game.incrLength();
+                                } else{
+                                    game.decrLength();
+                                }
                                 word.update(game.getLength());
                                 scrambled.setText(Word.spaceOut(word.getScrambledWord()));
                                 
@@ -468,7 +472,11 @@ public static void GUI(){
                                 panel.revalidate();
                                 panel.repaint();
                         
-                                game.incrLength();
+                                if (game.getLength() < 12){
+                                    game.incrLength();
+                                } else{
+                                    game.decrLength();
+                                }
                                 word.update(game.getLength());
                                 scrambled.setText(Word.spaceOut(word.getScrambledWord()));
                                 
