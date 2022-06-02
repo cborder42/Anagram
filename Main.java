@@ -12,8 +12,7 @@ import java.util.*;
 public class Main {
 
 public static void main(String[] args){
-    // Game n1 = new Game();
-    Main.GUI();
+    GUI();
 }
 public static void GUI(){
         //Main Frame Initializer
@@ -29,7 +28,7 @@ public static void GUI(){
         Font fontTitle = new Font("Sans Serif", Font.BOLD, 30);
         Font fontUnscramble = new Font("Sans Serif", Font.BOLD, 37);
         Font enterGuess = new Font("Sans Serif", Font.PLAIN, 24);
-        Font hint = new Font("Sans Serif", Font.PLAIN, 20);
+        Font blank = new Font("Sans Serif", Font.PLAIN, 45);
         Font counters = new Font("Sans Serif", Font.PLAIN, 20);
         
         //Create objects
@@ -59,34 +58,38 @@ public static void GUI(){
         //Section 2 (JTextField)
         JTextField textField = new JTextField();
         textField.setForeground(Color.LIGHT_GRAY);
-        textField.setFont(hint);
+        textField.setFont(counters);
 
         //Section 3(JButtons)
         JButton hintButton = new JButton("First Letter Hint");
         ImageIcon guessIcon = new ImageIcon("./guessbutton.png");
-        
-        // hintButton.setBackground(Color.green);
         JButton enterGuessButton = new JButton(guessIcon);
         enterGuessButton.setOpaque(true);
         enterGuessButton.setBorderPainted(false);
+        JButton startButton = new JButton("Restart");
+        startButton.setPreferredSize(new Dimension(50, 50));
         
-        // Labels
+        //Labels
         JLabel wrongResponse = new JLabel(" ");
         JLabel correctResponse = new JLabel("Correct!");
         JLabel hintResponse = new JLabel(" ");
+        JLabel blankResponse = new JLabel(" ");
+        JLabel correctWord = new JLabel(" ");
         correctResponse.setForeground(Color.green);
         wrongResponse.setForeground(Color.red);
-        wrongResponse.setFont(hint);
-        correctResponse.setFont(hint);
-        hintResponse.setFont(hint);
-    
+        wrongResponse.setFont(counters);
+        correctResponse.setFont(counters);
+        hintResponse.setFont(counters);
+        blankResponse.setFont(blank);
+        correctWord.setFont(fontTitle);
+        
         //word collector
         ArrayList<String> allWords = new ArrayList<String>();
 
         //Layout Manager
         layout.setAutoCreateGaps(true);
         layout.setAutoCreateContainerGaps(true);
-
+        
         layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
             .addComponent(title)
             .addGroup(layout.createSequentialGroup()
@@ -164,8 +167,8 @@ public static void GUI(){
                     panel.revalidate();
                     panel.repaint();
                 }
-                else if (guess.length() == 1){
-                    wrongResponse.setText("Please enter more than one letter");
+                else if (guess.length() < 3){
+                    wrongResponse.setText("Please enter more than two letters");
                         layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
                             .addComponent(title)
                             .addGroup(layout.createSequentialGroup()
@@ -370,41 +373,126 @@ public static void GUI(){
                             }
                         }
                         else {
-                            wrongResponse.setText("Incorrect");
-                            game.decrLives();
-                            layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
-                                .addComponent(title)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(levelCounter)
-                                    .addComponent(livesCounter)
-                                    .addComponent(hintCounter)  
-                                    .addComponent(scoreCounter))
-                                .addComponent(scrambled)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(textField, 0, 305, GroupLayout.PREFERRED_SIZE))
-                                .addComponent(enterGuessButton)
-                                .addComponent(wrongResponse)
-                                .addComponent(hintResponse));
-                    
-                            layout.setVerticalGroup(layout.createSequentialGroup()
-                                .addComponent(title)
-                                .addGroup(layout.createParallelGroup(CENTER)
-                                    .addComponent(levelCounter)
-                                    .addComponent(livesCounter)
-                                    .addComponent(hintCounter)
-                                    .addComponent(scoreCounter))
-                                .addComponent(scrambled)
-                                .addGroup(layout.createParallelGroup(CENTER)
-                                    .addComponent(textField, 0, 45, GroupLayout.PREFERRED_SIZE))
-                                .addComponent(enterGuessButton)
-                                .addComponent(wrongResponse)
-                                .addComponent(hintResponse));
+                            if (allWords.indexOf(guess) == -1){
+                                game.decrLives();
+                                livesCounter.setText("Lives: " + game.getLives() + "  ");
+                                allWords.add(guess);
+                                if (game.getLives() > 0){
+                                    wrongResponse.setText("Incorrect");
+                                    layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+                                        .addComponent(title)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(levelCounter)
+                                            .addComponent(livesCounter)
+                                            .addComponent(hintCounter)  
+                                            .addComponent(scoreCounter))
+                                        .addComponent(scrambled)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(textField, 0, 305, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(enterGuessButton)
+                                        .addComponent(wrongResponse)
+                                        .addComponent(hintResponse));
+                     
+                                    layout.setVerticalGroup(layout.createSequentialGroup()
+                                        .addComponent(title)
+                                        .addGroup(layout.createParallelGroup(CENTER)
+                                            .addComponent(levelCounter)
+                                            .addComponent(livesCounter)
+                                            .addComponent(hintCounter)
+                                            .addComponent(scoreCounter))
+                                        .addComponent(scrambled)
+                                        .addGroup(layout.createParallelGroup(CENTER)
+                                            .addComponent(textField, 0, 45, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(enterGuessButton)
+                                        .addComponent(wrongResponse)
+                                        .addComponent(hintResponse));
 
-                            panel.remove(correctResponse);
-                            frame.pack();
-                            panel.setVisible(true);
-                            panel.revalidate();
-                            panel.repaint();
+                                    panel.remove(correctResponse);
+                                    frame.pack();
+                                    panel.setVisible(true);
+                                    panel.revalidate();
+                                    panel.repaint();
+                                }
+                                else{
+                                    wrongResponse.setText("GAME OVER");
+                                    correctWord.setText("Correct Word: " + word.getWord());
+                                    layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+                                        .addComponent(title)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(levelCounter)
+                                            .addComponent(livesCounter)
+                                            .addComponent(hintCounter)  
+                                            .addComponent(scoreCounter))
+                                        .addComponent(scrambled)
+                                        .addComponent(blankResponse)
+                                        .addComponent(correctWord)
+                                        .addComponent(wrongResponse)
+                                        .addComponent(startButton));
+                    
+                                    layout.setVerticalGroup(layout.createSequentialGroup()
+                                        .addComponent(title)
+                                        .addGroup(layout.createParallelGroup(CENTER)
+                                            .addComponent(levelCounter)
+                                            .addComponent(livesCounter)
+                                            .addComponent(hintCounter)
+                                            .addComponent(scoreCounter))
+                                        .addComponent(scrambled)
+                                        .addComponent(blankResponse)
+                                        .addComponent(correctWord)
+                                        .addComponent(wrongResponse)
+                                        .addComponent(startButton));
+                                        
+                                    panel.remove(textField);
+                                    panel.remove(correctResponse);
+                                    panel.remove(hintResponse);
+                                    panel.remove(enterGuessButton);
+                                    panel.remove(hintButton);
+                                    frame.pack();
+                                    panel.setVisible(true);
+                                    panel.revalidate();
+                                    panel.repaint();
+                                    
+                                    for (int i = 0; i < allWords.size(); i++){
+                                        allWords.remove(0);
+                                    }
+                                }         
+                            }
+                            else{
+                                wrongResponse.setText("You already guessed this word.");
+                                layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+                                    .addComponent(title)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
+                                        .addComponent(hintCounter)
+                                        .addComponent(scoreCounter))
+                                    .addComponent(scrambled)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(textField, 0, 305, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(enterGuessButton)
+                                    .addComponent(wrongResponse)
+                                    .addComponent(hintResponse));
+                    
+                                layout.setVerticalGroup(layout.createSequentialGroup()
+                                    .addComponent(title)
+                                    .addGroup(layout.createParallelGroup(CENTER)
+                                        .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
+                                        .addComponent(hintCounter)
+                                        .addComponent(scoreCounter))
+                                    .addComponent(scrambled)
+                                    .addGroup(layout.createParallelGroup(CENTER)
+                                        .addComponent(textField, 0, 45, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(enterGuessButton)
+                                    .addComponent(wrongResponse)
+                                    .addComponent(hintResponse));
+                        
+                                panel.remove(correctResponse);
+                                frame.pack();
+                                panel.setVisible(true);
+                                panel.revalidate();
+                                panel.repaint();
+                            }
                         }
                     }
                 }
@@ -453,8 +541,8 @@ public static void GUI(){
                     panel.revalidate();
                     panel.repaint();
                 }
-                else if (guess.length() == 1){
-                    wrongResponse.setText("Please enter more than one letter");
+                else if (guess.length() < 3){
+                    wrongResponse.setText("Please enter more than two letters");
                         layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
                             .addComponent(title)
                             .addGroup(layout.createSequentialGroup()
@@ -659,46 +747,131 @@ public static void GUI(){
                             }
                         }
                         else {
-                            wrongResponse.setText("Incorrect");
-                            game.decrLives();
-                            layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
-                                .addComponent(title)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(levelCounter)
-                                    .addComponent(livesCounter)
-                                    .addComponent(hintCounter)  
-                                    .addComponent(scoreCounter))
-                                .addComponent(scrambled)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(textField, 0, 305, GroupLayout.PREFERRED_SIZE))
-                                .addComponent(enterGuessButton)
-                                .addComponent(wrongResponse)
-                                .addComponent(hintResponse));
-                    
-                            layout.setVerticalGroup(layout.createSequentialGroup()
-                                .addComponent(title)
-                                .addGroup(layout.createParallelGroup(CENTER)
-                                    .addComponent(levelCounter)
-                                    .addComponent(livesCounter)
-                                    .addComponent(hintCounter)
-                                    .addComponent(scoreCounter))
-                                .addComponent(scrambled)
-                                .addGroup(layout.createParallelGroup(CENTER)
-                                    .addComponent(textField, 0, 45, GroupLayout.PREFERRED_SIZE))
-                                .addComponent(enterGuessButton)
-                                .addComponent(wrongResponse)
-                                .addComponent(hintResponse));
+                            if (allWords.indexOf(guess) == -1){
+                                game.decrLives();
+                                livesCounter.setText("Lives: " + game.getLives() + "  ");
+                                allWords.add(guess);
+                                if (game.getLives() > 0){
+                                    wrongResponse.setText("Incorrect");
+                                    layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+                                        .addComponent(title)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(levelCounter)
+                                            .addComponent(livesCounter)
+                                            .addComponent(hintCounter)  
+                                            .addComponent(scoreCounter))
+                                        .addComponent(scrambled)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(textField, 0, 305, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(enterGuessButton)
+                                        .addComponent(wrongResponse)
+                                        .addComponent(hintResponse));
+                     
+                                    layout.setVerticalGroup(layout.createSequentialGroup()
+                                        .addComponent(title)
+                                        .addGroup(layout.createParallelGroup(CENTER)
+                                            .addComponent(levelCounter)
+                                            .addComponent(livesCounter)
+                                            .addComponent(hintCounter)
+                                            .addComponent(scoreCounter))
+                                        .addComponent(scrambled)
+                                        .addGroup(layout.createParallelGroup(CENTER)
+                                            .addComponent(textField, 0, 45, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(enterGuessButton)
+                                        .addComponent(wrongResponse)
+                                        .addComponent(hintResponse));
 
-                            panel.remove(correctResponse);
-                            frame.pack();
-                            panel.setVisible(true);
-                            panel.revalidate();
-                            panel.repaint();
+                                    panel.remove(correctResponse);
+                                    frame.pack();
+                                    panel.setVisible(true);
+                                    panel.revalidate();
+                                    panel.repaint();
+                                }
+                                else{
+                                    wrongResponse.setText("GAME OVER");
+                                    correctWord.setText("Correct Word: " + word.getWord());
+                                    layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+                                        .addComponent(title)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(levelCounter)
+                                            .addComponent(livesCounter)
+                                            .addComponent(hintCounter)  
+                                            .addComponent(scoreCounter))
+                                        .addComponent(scrambled)
+                                        .addComponent(blankResponse)
+                                        .addComponent(correctWord)
+                                        .addComponent(wrongResponse)
+                                        .addComponent(startButton));
+                    
+                                    layout.setVerticalGroup(layout.createSequentialGroup()
+                                        .addComponent(title)
+                                        .addGroup(layout.createParallelGroup(CENTER)
+                                            .addComponent(levelCounter)
+                                            .addComponent(livesCounter)
+                                            .addComponent(hintCounter)
+                                            .addComponent(scoreCounter))
+                                        .addComponent(scrambled)
+                                        .addComponent(blankResponse)
+                                        .addComponent(correctWord)
+                                        .addComponent(wrongResponse)
+                                        .addComponent(startButton));
+                                        
+                                    panel.remove(textField);
+                                    panel.remove(correctResponse);
+                                    panel.remove(hintResponse);
+                                    panel.remove(enterGuessButton);
+                                    panel.remove(hintButton);
+                                    frame.pack();
+                                    panel.setVisible(true);
+                                    panel.revalidate();
+                                    panel.repaint();
+                                    
+                                    for (int i = 0; i < allWords.size(); i++){
+                                        allWords.remove(0);
+                                    }
+                                }         
+                            }
+                            else{
+                                wrongResponse.setText("You already guessed this word.");
+                                layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
+                                    .addComponent(title)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
+                                        .addComponent(hintCounter)
+                                        .addComponent(scoreCounter))
+                                    .addComponent(scrambled)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(textField, 0, 305, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(enterGuessButton)
+                                    .addComponent(wrongResponse)
+                                    .addComponent(hintResponse));
+                    
+                                layout.setVerticalGroup(layout.createSequentialGroup()
+                                    .addComponent(title)
+                                    .addGroup(layout.createParallelGroup(CENTER)
+                                        .addComponent(levelCounter)
+                                        .addComponent(livesCounter)
+                                        .addComponent(hintCounter)
+                                        .addComponent(scoreCounter))
+                                    .addComponent(scrambled)
+                                    .addGroup(layout.createParallelGroup(CENTER)
+                                        .addComponent(textField, 0, 45, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(enterGuessButton)
+                                    .addComponent(wrongResponse)
+                                    .addComponent(hintResponse));
+                        
+                                panel.remove(correctResponse);
+                                frame.pack();
+                                panel.setVisible(true);
+                                panel.revalidate();
+                                panel.repaint();
+                            }
                         }
                     }
                 }
         }});
-        
+                
 // HINT
         hintButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
