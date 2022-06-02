@@ -21,6 +21,10 @@ public class Game{
         length++;
     }
     
+    public void decrLength() {
+        length-= 4;
+    }
+    
     public int getLevel(){
         return level;
     }
