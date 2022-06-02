@@ -13,23 +13,31 @@ public class Game{
         hint = 3;
     }
 
-    public int getLength() {
+    public int getLength(){
         return length;
     }
     
-    public void incrLength() {
+    public void incrLength(){
         length++;
     }
     
-    public void decrLength() {
+    public void decrLength(){
         length-= 4;
+    }
+    
+    public int getLives(){
+        return lives;
+    }
+    
+    public void decrLives(){
+        lives--;
     }
     
     public int getLevel(){
         return level;
     }
     
-    public void incrLevel() {
+    public void incrLevel(){
         level++;
     }
     
@@ -37,7 +45,7 @@ public class Game{
         return score;
     }
 
-    public void incrScore(int input) {
+    public void incrScore(int input){
         score+=input;
     }
     
@@ -47,6 +55,14 @@ public class Game{
     
     public void decrHint(){
         hint--;
+    }
+    
+    public void reset(){
+        score = 0;
+        level = 1;
+        lives = 5;
+        length = 3;
+        hint = 3;
     }
 
 }
