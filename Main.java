@@ -17,7 +17,7 @@ public static void main(String[] args){
 }
 public static void GUI(){
         //Main Frame Initializer
-        JFrame frame = new JFrame("One Word Anagram");
+        JFrame frame = new JFrame("Anagram");
         JPanel panel = new JPanel();
         GroupLayout layout = new GroupLayout(panel);
         panel.setLayout(layout);
@@ -371,6 +371,7 @@ public static void GUI(){
                         }
                         else {
                             wrongResponse.setText("Incorrect");
+                            game.decrLives();
                             layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
                                 .addComponent(title)
                                 .addGroup(layout.createSequentialGroup()
@@ -659,6 +660,7 @@ public static void GUI(){
                         }
                         else {
                             wrongResponse.setText("Incorrect");
+                            game.decrLives();
                             layout.setHorizontalGroup(layout.createParallelGroup(CENTER)
                                 .addComponent(title)
                                 .addGroup(layout.createSequentialGroup()
