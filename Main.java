@@ -9,7 +9,7 @@ import static java.awt.Image.SCALE_SMOOTH;
 
 import java.util.*;
 
-public class MainClass {
+public class Main {
 
 public static void main(String[] args){
     // Game n1 = new Game();
