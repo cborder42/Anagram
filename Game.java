@@ -10,7 +10,7 @@ public class Game{
         level = 1;
         lives = 5;
         length = 3;
-        hint = 3;
+        hint = 5;
     }
 
     public int getLength(){
@@ -62,7 +62,7 @@ public class Game{
         level = 1;
         lives = 5;
         length = 3;
-        hint = 3;
+        hint = 5;
     }
 
 }
