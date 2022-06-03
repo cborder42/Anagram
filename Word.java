@@ -43,8 +43,6 @@ public class Word {
         }
     }
     
-
- //EasyMode 
     public static ArrayList<String> getAllWords() {
         File file = new File("./words.txt");
 
@@ -96,10 +94,6 @@ public class Word {
             result += scrambled.get(j);
         }
         return result;
-    }
-
-    public static String getFirstLetterHint(String word) {
-        return word.substring(0, 1);
     }
 
     public static String spaceOut(String scrambledWord) {
