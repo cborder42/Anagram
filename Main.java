@@ -281,7 +281,7 @@ public class Main {
                 else if (guess.length() < 3){
                     getResponse(components, "Please enter more than two letters", 0);
                 }
-                else if(Word.checkForWord(guess)){
+                else if(Word.checkForWord(guess) || checkWord(word.getWord(), guess)){
                     if (checkWord(word.getWord(), guess)){
                         response.setText("Correct!");
                         response.setForeground(Color.green);
@@ -386,7 +386,7 @@ public class Main {
                 else if (guess.length() < 3){
                     getResponse(components, "Please enter more than two letters", 0);
                 }
-                else if(Word.checkForWord(guess)){
+                else if(Word.checkForWord(guess) || checkWord(word.getWord(), guess)){
                     if (checkWord(word.getWord(), guess)){
                         response.setText("Correct!");
                         response.setForeground(Color.green);
