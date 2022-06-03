@@ -1,0 +1,18 @@
+Hello There!
+
+Rules of Anagram:
+ - Try to form as many words as possible by rearranging the scrambled letters of one single word (the original word)
+ - You can form words of any length greater than 3 letters
+ - You will earn score for any correct entry, but will only move on to the next level once you enter the original word 
+ - You begin with 5 lives and 5 hints. 
+     - You will lose 1 life for every incorrect entry.
+     - Invalid entries (less than 3 letters in length, using letters that are not given) will not result in deduction of lives.
+     - Using a hint will show the first letter of the original word
+ - Try to score as high as you can!
+ 
+ Credits:
+ Caelen Yoong
+ Nathan Lacy
+ Nathaniel Leeks
+ Tony Wu
+ Victor Chapman 
